@@ -1,0 +1,13 @@
+/**
+ * 布局样式设置
+ */
+
+.global-screen {
+  width: 100vw;
+  height: 100vh;
+}
+
+.global-backdrop {
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}

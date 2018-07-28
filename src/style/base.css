@@ -1,0 +1,44 @@
+/**
+ * 基础样式设置
+ */
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+button {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+button[disabled],
+img[type="button"][disabled] {
+  filter: grayscale(60%);
+  cursor: not-allowed;
+}
+
+button:hover:not([disabled]),
+img[type="button"]:hover:not([disabled]) {
+  transform: scale(1.1);
+}
+
+button:active:not([disabled]),
+img[type="button"]:active:not([disabled]) {
+  transform: scale(1.1) translateY(3px);
+}

@@ -1,0 +1,23 @@
+/**
+ * @overview 原生业务
+ */
+
+export const nativeMixSound = (switcher, isEffective) => {
+  if (!isEffective) return;
+
+  window.WebFunMixSound
+    && window.WebFunMixSound(switcher);
+
+  window.JavascriptBridge
+    && window.JavascriptBridge.WebFunMixSound(switcher);
+};
+
+export const nativeGetAppInfo = () => {
+  const android = window.UserInfo
+    && window.UserInfo.getUserInfo();
+
+  const pc = window.WebGetTeachCourseInfo
+    && window.WebGetTeachCourseInfo();
+
+  return pc || android;
+};
