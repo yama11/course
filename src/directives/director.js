@@ -4,8 +4,8 @@
 
 const keyboard = {
   control: [9, 13, 63],
-  forward: [37, 38],
-  backward: [39, 40],
+  backward: [37, 38],
+  forward: [39, 40],
 };
 
 const handlerMap = new Map();
