@@ -30,7 +30,7 @@ export default {
   <div
     :style="style"
     class="
-      global-screen
+      global-ground
       global-backdrop
       app-ground
     "
@@ -41,8 +41,6 @@ export default {
 
 <style lang="postcss">
 .app-ground {
-  position: absolute;
-  top: 0;
-  left: 0,
+
 }
 </style>

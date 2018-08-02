@@ -2,9 +2,18 @@
  * 布局样式设置
  */
 
-.global-screen {
+.global-scene {
+  position: relative;
   width: 100vw;
   height: 100vh;
+}
+
+.global-ground {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
 }
 
 .global-backdrop {

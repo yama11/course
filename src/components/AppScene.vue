@@ -8,7 +8,7 @@
 import AppGround from './AppGround';
 
 export default {
-  name: '',
+  name: 'AppScene',
 
   components: {
     AppGround,
@@ -31,7 +31,7 @@ export default {
 </script>
 
 <template>
-  <div class="global-screen app-scene">
+  <div class="global-scene app-scene">
     <AppGround
       v-if="$store.appInfo.scene !== 'foreground'"
       :scene="background"
@@ -52,6 +52,6 @@ export default {
 
 <style lang="postcss">
 .app-scene {
-  position: relative;
+
 }
 </style>
