@@ -47,7 +47,25 @@ export default {
       },
     },
   ],
-  learn: [],
+  learn: [
+    {
+      type: 'teaching',
+      mode: 1,
+      scene: {
+        background: './course/teaching01/background.png',
+        foreground: '',
+      },
+      src: {
+        card: './course/card01/red.png',
+
+        texts: [
+          'hello',
+          'What color is it?',
+          'It is red.',
+        ],
+      },
+    },
+  ],
   game: [],
   summary: [],
   celebrate: [],
