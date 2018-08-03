@@ -70,7 +70,6 @@ export default {
 
     <TheDirector
       :disabled="director.disabled"
-      class="card-foreground__director"
       @control="directorBroadcast"
     />
   </div>
@@ -79,9 +78,5 @@ export default {
 <style lang="postcss">
 .card-foreground {
 
-}
-
-.card-foreground__director {
-  margin-left: auto;
 }
 </style>
