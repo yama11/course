@@ -5,15 +5,13 @@
  * @author huojinzhao
  */
 
-import BackgroundOne from './BackgroundOne';
-import ForegroundOne from './ForegroundOne';
+import ModeOne from './ModeOne';
 
 export default {
   name: 'ViewFlashcard',
 
   components: {
-    BackgroundOne,
-    ForegroundOne,
+    ...ModeOne,
   },
 
   props: {
@@ -30,8 +28,8 @@ export default {
       const postfix = list[this.asset.mode - 1];
 
       return {
-        background: `Background${postfix}`,
-        foreground: `Foreground${postfix}`,
+        background: `BackgroundMode${postfix}`,
+        foreground: `ForegroundMode${postfix}`,
       };
     },
 

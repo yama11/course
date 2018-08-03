@@ -5,10 +5,10 @@
  * @author huojinzhao
  */
 
-import ForegroundCard from './components/ForegroundCard';
+import ForegroundCard from '../components/ForegroundCard';
 
 export default {
-  name: 'ConcertForeground',
+  name: 'ConcertForegroundModeOne',
 
   components: {
     ForegroundCard,
