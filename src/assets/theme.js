@@ -41,4 +41,15 @@ export default {
     foreground: './theme/scene-foreground.png',
     background: './theme/scene-background.png',
   },
+
+  card: {
+    front: './theme/card-front.png',
+    reverse: './theme/card-reverse.png',
+    foreground: '',
+    background: './theme/card-background.png',
+  },
+
+  student: {
+    avatar: './theme/studnet-avatar.png',
+  },
 };

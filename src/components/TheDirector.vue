@@ -118,9 +118,7 @@ export default {
         disabled: this.disabled,
       };
 
-      const eventType = 'directorBroadcast';
-
-      this.$store.syncTeachGroupState(data, eventType);
+      this.$emit('control', data);
     },
   },
 };
@@ -155,6 +153,7 @@ export default {
   align-items: flex-start;
   position: absolute;
   bottom: 0;
+  right: 0;
   width: 100vw;
   height: 120px;
   padding-right: 250px;

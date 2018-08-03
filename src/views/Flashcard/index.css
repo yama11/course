@@ -1,0 +1,20 @@
+/**
+ * 模块公共类
+ */
+
+.module-card-item {
+  position: relative;
+  display: inline-block;
+  width: 280px;
+  height: 360px;
+  margin: 80px 40px 30px 40px;
+  cursor: pointer;
+}
+
+.module-card-container {
+  display: flex;
+  justify-content: center;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  padding-right: 60vw;
+}

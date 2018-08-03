@@ -19,20 +19,28 @@ export default {
   created() {
     this.$ws.on(
       'directorCallback',
-      this.controlDirectorState,
+      this.directorControl,
     );
   },
 
   beforeDestroy() {
     this.$ws.off(
       'directorCallback',
-      this.controlDirectorState,
+      this.directorControl,
     );
   },
 
   methods: {
-    controlDirectorState({ data }) {
+    directorControl({ data }) {
       this.director = { ...this.director, ...data };
+    },
+
+    directorBroadcast(state) {
+      const eventType = 'directorBroadcast';
+
+      const data = { state };
+
+      this.$store.syncTeachGroupState(data, eventType);
     },
   },
 };
@@ -43,6 +51,7 @@ export default {
     <TheDirector
       :is-playing = "director.isPlaying"
       :disabled = "director.disabled"
+      @control="directorBroadcast"
     />
   </div>
 </template>
