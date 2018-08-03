@@ -8,7 +8,7 @@
 import BackgroundCard from '../components/BackgroundCard';
 
 export default {
-  name: 'ConcertBackgroundModeOne',
+  name: 'FlashcardBackgroundModeOne',
 
   components: {
     BackgroundCard,
