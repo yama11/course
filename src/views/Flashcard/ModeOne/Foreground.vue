@@ -68,7 +68,7 @@ export default {
       :amount="10"
     />
 
-    <TheDirector
+    <AppDirector
       :disabled="director.disabled"
       @control="directorBroadcast"
     />

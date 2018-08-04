@@ -25,7 +25,7 @@ export default {
 
 <template>
   <div class="teachingforeground global-scene">
-    <TheDirector :disabled="director.disabled" />
+    <AppDirector :disabled="director.disabled" />
   </div>
 </template>
 

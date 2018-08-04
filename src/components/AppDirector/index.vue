@@ -6,7 +6,7 @@
  */
 
 export default {
-  name: 'TheDirector',
+  name: 'AppDirector',
 
   props: {
     disabled: {
@@ -125,7 +125,7 @@ export default {
 </script>
 
 <template>
-  <div class="the-director">
+  <div class="app-director">
     <button
       v-director.backward="backward"
       :style="composeBtnBgImg(theme.backward)"
@@ -147,7 +147,7 @@ export default {
 </template>
 
 <style lang="postcss">
-.the-director {
+.app-director {
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
@@ -159,7 +159,7 @@ export default {
   padding-right: 250px;
 }
 
-.the-director > button {
+.app-director > button {
   margin: 0 10px;
   height: 80px;
   width: 80px;

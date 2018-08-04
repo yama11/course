@@ -48,7 +48,7 @@ export default {
 
 <template>
   <div class="concert-foreground">
-    <TheDirector
+    <AppDirector
       :is-playing = "director.isPlaying"
       :disabled = "director.disabled"
       @control="directorBroadcast"

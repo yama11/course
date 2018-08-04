@@ -1,12 +1,12 @@
 import AppScene from './AppScene';
 import AppGround from './AppGround';
-import TheDirector from './TheDirector';
+import AppDirector from './AppDirector';
 import TheMenu from './TheMenu';
 
 const components = {
   AppScene,
   AppGround,
-  TheDirector,
+  AppDirector,
   TheMenu,
 };
 

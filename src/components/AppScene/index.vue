@@ -5,7 +5,7 @@
  * @author huojinzhao
  */
 
-import AppGround from './AppGround';
+import AppGround from '../AppGround';
 
 export default {
   name: 'AppScene',
