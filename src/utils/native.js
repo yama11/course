@@ -21,3 +21,15 @@ export const nativeGetAppInfo = () => {
 
   return pc || android;
 };
+
+export const equipmentInform = (data) => {
+  const fn = window.equipmentInform
+    ||
+    (
+      window.JavascriptBridge
+      &&
+      window.JavascriptBridge.equipmentInform
+    );
+
+  fn && fn(data);
+};
