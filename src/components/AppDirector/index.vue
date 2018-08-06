@@ -41,7 +41,9 @@ export default {
     },
 
     sectionFlanks() {
-      const sectionNames = Object.keys(this.$store.assets);
+      const sectionNames = Object.keys(this.$store.assets)
+        .filter(key => this.$store.assets[key].length);
+
       const currentSection = this.$store.state.section;
 
       const index = sectionNames.indexOf(currentSection);
@@ -59,9 +61,11 @@ export default {
     },
 
     isForwardDisabled() {
-      const { section } = this.$store.state;
+      const { state, sectionAssets } = this.$store;
+      const isStepEnded = state.step <= sectionAssets.length - 1;
+      const isSectionEnded = !this.sectionFlanks.forward;
 
-      return section === 'celebrate';
+      return isStepEnded && isSectionEnded;
     },
   },
 
