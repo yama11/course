@@ -5,14 +5,8 @@
  * @author huojinzhao
  */
 
-import BackgroundCard from '../components/BackgroundCard';
-
 export default {
   name: 'FlashcardBackgroundModeOne',
-
-  components: {
-    BackgroundCard,
-  },
 
   props: {
     src: {
@@ -58,11 +52,11 @@ export default {
   <div
     class="
       global-scene
-      module-card-container
+      global-card-container
       card-background
     "
   >
-    <BackgroundCard
+    <AppBackgroundCard
       v-for="item in src.cards"
       :key="item.url"
       :card="item.url"

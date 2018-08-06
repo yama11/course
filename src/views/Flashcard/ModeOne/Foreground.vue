@@ -57,7 +57,7 @@ export default {
   <div
     class="
       card-foreground
-      module-card-container
+      global-card-container
       global-scene
     "
   >

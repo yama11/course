@@ -6,7 +6,7 @@
  */
 
 export default {
-  name: 'BackgroundCard',
+  name: 'AppBackgroundCard',
 
   props: {
     // 内容卡牌图片地址
@@ -23,7 +23,7 @@ export default {
     // 卡牌是否翻转正面
     active: {
       type: Boolean,
-      default: false,
+      default: true,
     },
   },
 
@@ -38,26 +38,26 @@ export default {
 <template>
   <div
     :class="[
-      'module-card-item',
-      'background-card',
+      'global-card-item',
+      'app-background-card',
       {
-        'background-card--active': active,
+        'app-background-card--active': active,
       }
     ]"
   >
     <img
       :src="theme.reverse"
       class="
-        background-card__reverse
-        background-card__element
+        app-background-card__reverse
+        app-background-card__element
       "
       alt="card-reverse"
     >
     <img
       :src="theme.front"
       class="
-        background-card__front
-        background-card__element
+        app-background-card__front
+        app-background-card__element
       "
       alt="card-front"
     >
@@ -67,8 +67,8 @@ export default {
       }"
       class="
         global-backdrop
-        background-card__content
-        background-card__element
+        app-background-card__content
+        app-background-card__element
       "
     >
       {{ text }}
@@ -77,25 +77,25 @@ export default {
 </template>
 
 <style lang="postcss">
-.background-card {
+.app-background-card {
   position: relative;
   transition: transform .5s ease-in;
   transform-style: preserve-3d;
   transform: perspective(800px) rotateY(180deg); /*no*/
 }
 
-.background-card--active {
+.app-background-card--active {
   transform: perspective(800px) rotateY(0deg); /*no*/
 }
 
-.background-card__element {
+.app-background-card__element {
   position: absolute;
   backface-visibility: hidden;
   width: 100%;
   height: 100%;
 }
 
-.background-card__content {
+.app-background-card__content {
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -104,7 +104,7 @@ export default {
   padding-bottom: 1em;
 }
 
-.background-card__reverse {
+.app-background-card__reverse {
   transform: rotateY(180deg);
 }
 </style>

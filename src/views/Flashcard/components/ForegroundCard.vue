@@ -35,7 +35,7 @@ export default {
 </script>
 
 <template>
-  <div class="foreground-card module-card-item">
+  <div class="foreground-card global-card-item">
     <div class="foreground-card__amount">
       <i>{{ label }}</i>
       <span
