@@ -1,6 +1,6 @@
 <script>
 /**
- * @overview 教学场景 - 一图多文
+ * @overview 教学场景 - 多图多文
  *
  * @author huojinzhao
  */

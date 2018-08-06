@@ -28,7 +28,7 @@ export default {
       src: {
         cards: [
           {
-            url: './course/card01/red.png',
+            url: './course/teaching01/red.png',
             text: 'red',
           },
           {
@@ -56,12 +56,40 @@ export default {
         foreground: '',
       },
       src: {
-        card: './course/card01/red.png',
+        card: './course/teaching01/red.png',
 
         texts: [
           'hello',
-          'What color is it?',
+          'What color is it hai hai hai hai?',
           'It is red.',
+        ],
+      },
+    },
+    {
+      type: 'teaching',
+      mode: 2,
+      scene: {
+        background: './course/teaching02/background.png',
+        foreground: '',
+      },
+      src: {
+        cards: [
+          {
+            url: './course/teaching01/red.png',
+            text: 'red',
+          },
+          {
+            url: './course/card01/yellow.png',
+            text: 'yellow',
+          },
+          {
+            url: './course/card01/labi.png',
+            text: 'labi',
+          },
+          {
+            url: './course/card01/apple.png',
+            text: 'apple',
+          },
         ],
       },
     },

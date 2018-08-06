@@ -25,7 +25,7 @@ export default {
   <div
     class="
       global-scene
-      teachingbackground
+      teaching-background
     "
   >
     <img
@@ -33,32 +33,40 @@ export default {
       :src="src.card"
       alt="展示卡"
     >
-    <span
-      v-for="text in src.texts"
-      :key="text"
+    <ul
+      v-if="src.texts && src.texts.length"
+      class="teaching-background__content"
     >
-      {{ text }}
-    </span>
+      <li
+        v-for="text in src.texts"
+        :key="text"
+      >
+        {{ text }}
+      </li>
+    </ul>
   </div>
 </template>
 
-<style lang="postcss">
-.teachingbackground {
+<style lang="postcss" scoped>
+.teaching-background {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-right: 850px;
+  padding-right: 920px;
 }
 
-.teachingbackground > img {
-  width: 350px;
-  height: 350px;
-}
-
-.teachingbackground > span {
-  margin-bottom: 30px;
-  font-size: 40px;
-  font-weight: bolder;
+.teaching-background__content {
+  box-sizing: border-box;
+  padding: .8em .25em;
+  width: 600px;
+  border: 10px solid #f28d20;
+  border-radius: 20px;
+  background-color: white;
+  color: #70370d;
+  font-size: 36px;
+  line-height: 1.3em;
+  text-align: center;
+  font-weight: bold;
 }
 </style>

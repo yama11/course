@@ -6,12 +6,14 @@
  */
 
 import ModeOne from './ModeOne';
+import ModeTwo from './ModeTwo';
 
 export default {
   name: 'ViewTeaching',
 
   components: {
     ...ModeOne,
+    ...ModeTwo,
   },
 
   props: {

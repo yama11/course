@@ -31,5 +31,5 @@ export const equipmentInform = (data) => {
       window.JavascriptBridge.equipmentInform
     );
 
-  fn && fn(data);
+  fn && fn(JSON.stringify(data));
 };

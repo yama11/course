@@ -27,6 +27,15 @@ button {
   cursor: pointer;
 }
 
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
 button[disabled],
 img[type="button"][disabled] {
   filter: grayscale(60%);
