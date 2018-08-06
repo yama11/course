@@ -9,7 +9,6 @@ export default {
   name: 'AppBackgroundCard',
 
   props: {
-    // 内容卡牌图片地址
     card: {
       type: String,
       required: true,
@@ -20,10 +19,15 @@ export default {
       default: '',
     },
 
-    // 卡牌是否翻转正面
     active: {
       type: Boolean,
       default: true,
+    },
+
+    // 是否主题透明
+    isTransparent: {
+      type: Boolean,
+      default: false,
     },
   },
 
@@ -46,6 +50,7 @@ export default {
     ]"
   >
     <img
+      v-show="!isTransparent"
       :src="theme.reverse"
       class="
         app-background-card__reverse
@@ -54,6 +59,7 @@ export default {
       alt="card-reverse"
     >
     <img
+      v-show="!isTransparent"
       :src="theme.front"
       class="
         app-background-card__front
@@ -66,7 +72,6 @@ export default {
         'background-image': `url(${card})`
       }"
       class="
-        global-backdrop
         app-background-card__content
         app-background-card__element
       "
@@ -102,6 +107,9 @@ export default {
   font-size: 40px;
   font-weight: 600;
   padding-bottom: 1em;
+  background-size: contain;
+  background-position: center top;
+  background-repeat: no-repeat;
 }
 
 .app-background-card__reverse {
