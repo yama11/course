@@ -15,18 +15,20 @@ export default {
       default: 0,
     },
 
-    // 顺序索引，映射选项
-    index: {
-      type: Number,
+    // 选项
+    label: {
+      type: String,
       required: true,
+    },
+
+    // 是否第一激活
+    active: {
+      type: Boolean,
+      default: false,
     },
   },
 
   computed: {
-    label() {
-      return ['A', 'B', 'C', 'D'][this.index];
-    },
-
     theme() {
       return this.$store.theme.student;
     },
@@ -44,7 +46,9 @@ export default {
         }"
         class="global-backdrop"
       />
-      <span>{{ amount }}</span>
+      <span :class="active ? 'foreground-card--active' : ''">
+        {{ amount }}
+      </span>
     </div>
   </div>
 </template>
@@ -87,5 +91,9 @@ export default {
   font-weight: bolder;
   font-size: 38px;
   color: #843d0d;
+}
+
+.foreground-card__amount > span:last-of-type.foreground-card--active {
+  background-color: white;
 }
 </style>

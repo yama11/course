@@ -16,7 +16,7 @@ export default {
   },
 
   data: () => ({
-    active: false,
+    activeList: [],
   }),
 
   created() {
@@ -34,11 +34,15 @@ export default {
   },
 
   methods: {
-    receiveDirectorState() {
-      this.active = !this.active;
+    receiveDirectorState({ data: { label } }) {
+      this.activeList = [...this.activeList, label];
     },
 
-    concertEnd() {
+    getLabel(index) {
+      return ['A', 'B', 'C', 'D'][index];
+    },
+
+    flashcardModeOneEnd() {
       const eventType = 'directorCallback';
       const data = { disabled: true };
 
@@ -57,11 +61,11 @@ export default {
     "
   >
     <AppBackgroundCard
-      v-for="item in src.cards"
+      v-for="(item, index) in src.cards"
       :key="item.url"
       :card="item.url"
       :text="item.text"
-      :active="active"
+      :active="activeList.includes(getLabel(index))"
     />
   </div>
 </template>
