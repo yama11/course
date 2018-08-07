@@ -86,10 +86,6 @@ export default {
             url: './course/card01/labi.png',
             text: 'labi',
           },
-          {
-            url: './course/card01/labi.png',
-            text: 'labi',
-          },
         ],
       },
     },

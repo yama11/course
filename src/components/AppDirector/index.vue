@@ -62,7 +62,7 @@ export default {
 
     isForwardDisabled() {
       const { state, sectionAssets } = this.$store;
-      const isStepEnded = state.step <= sectionAssets.length - 1;
+      const isStepEnded = state.step >= sectionAssets.length - 1;
       const isSectionEnded = !this.sectionFlanks.forward;
 
       return isStepEnded && isSectionEnded;
@@ -97,7 +97,7 @@ export default {
     },
 
     forward() {
-      if (this.isForewardDisabled) return;
+      if (this.isForwardDisabled) return;
 
       const { state, sectionAssets } = this.$store;
 
