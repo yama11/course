@@ -75,7 +75,7 @@ export default {
       src: {
         cards: [
           {
-            url: './course/teaching01/red.png',
+            url: './course/card01/red.png',
             text: 'red',
           },
           {
@@ -87,8 +87,8 @@ export default {
             text: 'labi',
           },
           {
-            url: './course/card01/apple.png',
-            text: 'apple',
+            url: './course/card01/labi.png',
+            text: 'labi',
           },
         ],
       },

@@ -22,11 +22,11 @@
 }
 
 .global-card-item {
-    position: relative;
+  position: relative;
   display: inline-block;
   width: 280px;
   height: 360px;
-  margin: 80px 40px 30px 40px;
+  margin: 80px 30px 30px 30px;
   cursor: pointer;
 }
 

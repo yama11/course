@@ -21,7 +21,6 @@ export default {
   <div
     class="
       global-scene
-      global-card-container
       teaching-background
     "
   >
@@ -37,6 +36,9 @@ export default {
 
 <style lang="postcss" scoped>
 .teaching-background {
-
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
 }
 </style>
