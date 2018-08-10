@@ -69,6 +69,14 @@ export default {
     },
   },
 
+  created() {
+    this.$ws.on('directorControl', this.directorControlCallback);
+  },
+
+  destroyed() {
+    this.$ws.off('directorControl', this.directorControlCallback);
+  },
+
   methods: {
     composeBtnBgImg(url) {
       return {
@@ -122,6 +130,10 @@ export default {
         disabled: this.disabled,
       };
 
+      this.$store.syncTeachGroupState(data, 'directorControl');
+    },
+
+    directorControlCallback({ data }) {
       this.$emit('control', data);
     },
   },
