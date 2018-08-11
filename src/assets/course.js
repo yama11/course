@@ -19,6 +19,16 @@ export default {
   ],
   warmup: [
     {
+      type: 'television',
+      scene: {
+        background: './course/television/background.png',
+        foreground: '',
+      },
+      src: {
+        video: './course/television/video.mp4',
+      },
+    },
+    {
       type: 'flashcard',
       mode: 1,
       scene: {
