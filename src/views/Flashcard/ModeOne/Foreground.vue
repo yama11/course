@@ -45,6 +45,12 @@ export default {
 
       return rankList.sort((a, b) => b.amount - a.amount);
     },
+
+    moduleName() {
+      const { step, section } = this.$store.state;
+
+      return `flashcard-${section}-${step}`;
+    },
   },
 
   created() {
@@ -91,7 +97,9 @@ export default {
     },
 
     equipmentInform(tag) {
-      const data = { tag, type: 'flashcardModeOne' };
+      const type = 'flashcard';
+
+      const data = { tag, type, name: this.moduleName };
 
       equipmentInform(data);
     },
@@ -106,8 +114,8 @@ export default {
       this.$store.syncTeachGroupState(data, eventType);
     },
 
-    equipmentCallback({ detail: { type, data } }) {
-      if (type === 'flashcardModeOne') {
+    equipmentCallback({ detail: { name, data } }) {
+      if (name === this.moduleName) {
         this.amounts = data;
       }
     },
