@@ -5,7 +5,7 @@
 export default {
   home: [
     {
-      // 类型：启动页
+      // 类型：启动环节
       type: 'boot',
       // 场景数据：启动页场景来自主题数据
       scene: {
@@ -22,6 +22,7 @@ export default {
   ],
   warmup: [
     {
+      // 类型：视频环节
       type: 'television',
       scene: {
         background: './course/television/background.png',
@@ -32,12 +33,15 @@ export default {
       },
     },
     {
+      // 类型：闪卡环节，目前有四种模式
       type: 'flashcard',
+      // 模式一
       mode: 1,
       scene: {
         background: './course/card01/background.png',
         foreground: '',
       },
+      // 模式一：四张有可带文字的卡牌按照投票排名顺序翻转
       src: {
         cards: [
           {
@@ -66,16 +70,20 @@ export default {
         background: './course/card01/background.png',
         foreground: '',
       },
+      // 模式二：随机生成三张题目干扰项卡牌和选项干扰项卡牌
       src: {
+        // 正确答案
         answer: {
           select: 'B',
           url: './course/card02/select/apple.png',
         },
+        // 题目
         topic: [
           './course/card02/disturb/limao.png',
           './course/card02/disturb/siyecao.png',
           './course/card02/disturb/yinliao.png',
         ],
+        // 选项
         options: [
           './course/card02/select/red.png',
           './course/card02/select/yellow.png',
@@ -90,6 +98,7 @@ export default {
         background: './course/card01/background.png',
         foreground: '',
       },
+      // 模式三：根据播放的音乐选择对应的正确卡牌
       src: {
         answer: {
           select: 'C',
@@ -122,6 +131,7 @@ export default {
         background: './course/card01/background.png',
         foreground: '',
       },
+      // 模式四：题目是一张自定义图片，根据图片选择选项
       src: {
         answer: {
           select: 'D',
@@ -150,12 +160,14 @@ export default {
   ],
   learn: [
     {
+      // 教学场景，目前有两种模式
       type: 'teaching',
       mode: 1,
       scene: {
         background: './course/teaching01/background.png',
         foreground: '',
       },
+      // 模式一，一张卡片多个文字，卡片和文字都是可选
       src: {
         card: './course/teaching01/red.png',
 
@@ -173,6 +185,7 @@ export default {
         background: './course/teaching02/background.png',
         foreground: '',
       },
+      // 模式二，卡片文字一对一
       src: {
         cards: [
           {
@@ -195,6 +208,7 @@ export default {
   summary: [],
   celebrate: [
     {
+      // 结算环节
       type: 'celebrate',
       // 来自主题数据
       scene: {
