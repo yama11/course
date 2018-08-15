@@ -56,6 +56,30 @@ export default {
         ],
       },
     },
+    {
+      type: 'flashcard',
+      mode: 2,
+      scene: {
+        background: './course/card01/background.png',
+        foreground: '',
+      },
+      src: {
+        answer: {
+          select: 'B',
+          url: './course/card02/select/apple.png',
+        },
+        topic: [
+          './course/card02/disturb/limao.png',
+          './course/card02/disturb/siyecao.png',
+          './course/card02/disturb/yinliao.png',
+        ],
+        options: [
+          './course/card02/select/red.png',
+          './course/card02/select/yellow.png',
+          './course/card02/select/labi.png',
+        ],
+      },
+    },
   ],
   learn: [
     {

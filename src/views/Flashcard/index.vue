@@ -6,12 +6,14 @@
  */
 
 import ModeOne from './ModeOne';
+import ModeTwo from './ModeTwo';
 
 export default {
   name: 'ViewFlashcard',
 
   components: {
     ...ModeOne,
+    ...ModeTwo,
   },
 
   props: {
