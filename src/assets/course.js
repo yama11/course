@@ -5,15 +5,18 @@
 export default {
   home: [
     {
-      type: 'concert',
+      // 类型：启动页
+      type: 'boot',
+      // 场景数据：启动页场景来自主题数据
       scene: {
         background: './theme/scene-background.png',
         foreground: './theme/scene-foreground.png',
       },
       src: {
-        audio: [
-          './course/home/music.mp3',
-        ],
+        // 课件课序
+        index: 'PK-1',
+        // 课时标题
+        title: 'Letter Aa,Bb',
       },
     },
   ],

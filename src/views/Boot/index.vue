@@ -9,7 +9,7 @@ import Background from './Background';
 import Foreground from './Foreground';
 
 export default {
-  name: 'ViewCelebrate',
+  name: 'ViewBoot',
 
   components: {
     Background,
@@ -29,16 +29,17 @@ export default {
   <AppScene
     :foreground="asset.scene.foreground"
     :background="asset.scene.background"
-    class="view-celebrate"
+    class="view-boot"
   >
     <Background slot="background" />
 
-    <Foreground slot="foreground" />
+    <!-- eslint-disable-next-line -->
+    <Foreground slot="foreground" :src="asset.src" />
   </AppScene>
 </template>
 
 <style lang="postcss">
-.view-celebrate {
+.view-boot {
 
 }
 </style>

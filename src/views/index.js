@@ -1,3 +1,4 @@
+export { default as ViewBoot } from './Boot';
 export { default as ViewCelebrate } from './Celebrate';
 export { default as ViewConcert } from './Concert';
 export { default as ViewFlashcard } from './Flashcard';
