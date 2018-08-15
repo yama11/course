@@ -112,11 +112,11 @@ export default {
     directorBroadcast() {
       if (this.currIndex === 0) {
         this.intervalJump();
+
+        this.director.disabled = true;
       }
 
-      if (this.currIndex <= 1) {
-        this.equipmentInform(Number(!this.currIndex));
-      }
+      this.currIndex <= 1 && this.equipmentInform(Number(!this.currIndex));
 
       this.currIndex >= 1 && this.backgroundInform();
 
@@ -142,6 +142,8 @@ export default {
         this.isJump = true;
 
         this.backgroundShow();
+
+        this.director.disabled = false;
       }, 1000);
     },
 
