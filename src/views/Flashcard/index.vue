@@ -8,6 +8,7 @@
 import ModeOne from './ModeOne';
 import ModeTwo from './ModeTwo';
 import ModeThree from './ModeThree';
+import ModeFour from './ModeFour';
 
 export default {
   name: 'ViewFlashcard',
@@ -16,6 +17,7 @@ export default {
     ...ModeOne,
     ...ModeTwo,
     ...ModeThree,
+    ...ModeFour,
   },
 
   props: {
