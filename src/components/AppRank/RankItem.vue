@@ -56,7 +56,7 @@ export default {
       class="app-rank-item__info"
     >
       <span class="app-rank-item__name">
-        {{ data.name }}
+        {{ data.student_name }}
       </span>
       <span class="app-rank-item__score">
         {{ data.score }}

@@ -59,7 +59,7 @@ export default {
   },
 
   celebrate: {
-    panel: '',
-    groove: '',
+    background: './theme/celebrate-background.png',
+    groove: './theme/celebrate-groove.png',
   },
 };

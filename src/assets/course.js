@@ -190,6 +190,15 @@ export default {
   ],
   game: [],
   summary: [],
-  celebrate: [],
+  celebrate: [
+    {
+      type: 'celebrate',
+      // 来自主题数据
+      scene: {
+        background: './theme/celebrate-background',
+        foreground: '',
+      },
+    },
+  ],
 };
 
