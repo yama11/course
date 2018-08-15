@@ -1,14 +1,16 @@
 import AppBackgroundCard from './AppBackgroundCard';
-import AppScene from './AppScene';
-import AppGround from './AppGround';
 import AppDirector from './AppDirector';
+import AppGround from './AppGround';
+import AppRank from './AppRank';
+import AppScene from './AppScene';
 import TheMenu from './TheMenu';
 
 const components = {
   AppBackgroundCard,
-  AppScene,
-  AppGround,
   AppDirector,
+  AppGround,
+  AppRank,
+  AppScene,
   TheMenu,
 };
 

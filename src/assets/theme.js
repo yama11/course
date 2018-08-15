@@ -50,6 +50,16 @@ export default {
   },
 
   student: {
-    avatar: './theme/studnet-avatar.png',
+    avatar: './theme/student-avatar.png',
+  },
+
+  rank: {
+    panel: './theme/rank-panel.png',
+    groove: './theme/rank-groove.png',
+  },
+
+  celebrate: {
+    panel: '',
+    groove: '',
   },
 };
