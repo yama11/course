@@ -80,6 +80,38 @@ export default {
         ],
       },
     },
+    {
+      type: 'flashcard',
+      mode: 3,
+      scene: {
+        background: './course/card01/background.png',
+        foreground: '',
+      },
+      src: {
+        answer: {
+          select: 'C',
+          url: './course/card02/select/apple.png',
+          text: 'apple',
+        },
+        topic: {
+          audio: './course/home/music.mp3',
+        },
+        options: [
+          {
+            url: './course/card02/select/labi.png',
+            text: 'red',
+          },
+          {
+            url: './course/card02/select/yellow.png',
+            text: 'yellow',
+          },
+          {
+            url: './course/card02/disturb/siyecao.png',
+            text: 'labi',
+          },
+        ],
+      },
+    },
   ],
   learn: [
     {
