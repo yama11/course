@@ -54,11 +54,7 @@ export default {
       </li>
     </ul>
 
-    <AppDirector
-      :is-playing = "director.isPlaying"
-      :disabled = "director.disabled"
-      @control="directorBroadcast"
-    />
+    <AppDirector :disabled = "director.disabled" />
   </div>
 
 </template>
