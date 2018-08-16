@@ -212,7 +212,7 @@ export default {
       type: 'celebrate',
       // 来自主题数据
       scene: {
-        background: './theme/celebrate-background',
+        background: './theme/celebrate-background.png',
         foreground: '',
       },
     },
