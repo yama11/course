@@ -38,6 +38,8 @@ export default {
 
     selectList: ['A', 'B', 'C', 'D'],
 
+    isShowRank: false,
+
     // 控制器执行步进
     currIndex: 0,
   }),
@@ -70,6 +72,14 @@ export default {
       const { step, section } = this.$store.state;
 
       return `flashcard-${section}-${step}`;
+    },
+
+    studentRank() {
+      if (this.moduleName !== this.$store.score.game_name) {
+        return [];
+      }
+
+      return this.$store.score.game_score_rank;
     },
   },
 
@@ -115,9 +125,11 @@ export default {
         this.backgroundShow();
       }
 
-      this.currIndex >= 1 && this.backgroundInform();
+      this.currIndex === 1 && this.backgroundInform();
 
-      if (this.currIndex >= 1) {
+      if (this.currIndex >= 2) {
+        this.isShowRank = true;
+
         this.director.disabled = true;
       }
 
@@ -185,7 +197,7 @@ export default {
       <source :src="src.topic.audio">
     </audio>
 
-    <div v-if="isTopic">
+    <div v-if="isTopic && !isShowRank">
       <ForegroundCard
         v-for="(item, index) in optionImg"
         :key="item.url"
@@ -194,6 +206,13 @@ export default {
         :amount="amounts[getLabel(index)]"
       />
     </div>
+
+    <AppRank
+      v-if="isShowRank"
+      :list="studentRank"
+      :groove="$store.theme.rank.groove"
+      :panel="$store.theme.rank.panel"
+    />
 
     <AppDirector
       :disabled="director.disabled"
