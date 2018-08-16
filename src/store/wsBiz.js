@@ -18,11 +18,11 @@ export default {
     },
 
     curriculumGroupSymbol() {
-      return `curriculum_${this.appInfo.curriculum_detail_id}`;
+      return `curriculum_${this.appInfo.schedule_id}`;
     },
 
     teachGroupSymbol() {
-      return `teach_${this.appInfo.curriculum_detail_id}`;
+      return `teach_${this.appInfo.schedule_id}`;
     },
   },
 

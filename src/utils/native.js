@@ -13,8 +13,8 @@ export const nativeMixSound = (switcher, isEffective) => {
 };
 
 export const nativeGetAppInfo = () => {
-  const android = window.UserInfo
-    && window.UserInfo.getUserInfo();
+  const android = window.JavascriptBridge
+    && window.JavascriptBridge.WebGetTeachCourseInfo();
 
   const pc = window.WebGetTeachCourseInfo
     && window.WebGetTeachCourseInfo();
