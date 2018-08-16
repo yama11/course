@@ -18,15 +18,15 @@ const devInfo =
     ?
     {
       id: 99,
-      classes_id: 1,
-      curriculum_detail_id: 247,
+      class_id: 1,
+      schedule_id: 247,
       role: 'teacher',
     }
     :
     {
       id: randomNum,
-      classes_id: randomNum,
-      curriculum_detail_id: randomNum,
+      class_id: randomNum,
+      schedule_id: randomNum,
       role: 'manager',
     };
 
