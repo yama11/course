@@ -38,6 +38,8 @@ export default {
 
     selectList: ['A', 'B', 'C', 'D'],
 
+    isShowRank: false,
+
     // 控制器执行步进
     currIndex: 0,
   }),
@@ -70,6 +72,14 @@ export default {
       const { step, section } = this.$store.state;
 
       return `flashcard-${section}-${step}`;
+    },
+
+    studentRank() {
+      if (this.moduleName !== this.$store.score.game_name) {
+        return [];
+      }
+
+      return this.$store.score.game_score_rank;
     },
   },
 
@@ -107,9 +117,11 @@ export default {
         this.backgroundShow();
       }
 
-      this.currIndex >= 1 && this.backgroundInform();
+      this.currIndex === 1 && this.backgroundInform();
 
-      if (this.currIndex >= 1) {
+      if (this.currIndex >= 2) {
+        this.isShowRank = true;
+
         this.director.disabled = true;
       }
 
@@ -166,25 +178,35 @@ export default {
 </script>
 
 <template>
+
   <div
     class="
       card-foreground
       global-card-container
       global-scene
+      card-foreground__topic
     ">
 
     <img
       v-if="!isTopic"
-      :src="src.topic"
-      class="card-foreground__topic">
+      :src="src.topic">
 
-    <ForegroundCard
-      v-for="(item, index) in optionImg"
-      v-else
-      :key="item.url"
-      :active="checkCardActive(getLabel(index))"
-      :label="getLabel(index)"
-      :amount="amounts[getLabel(index)]"
+    <div
+      v-if="isTopic && !isShowRank">
+      <ForegroundCard
+        v-for="(item, index) in optionImg"
+        :key="item.url"
+        :active="checkCardActive(getLabel(index))"
+        :label="getLabel(index)"
+        :amount="amounts[getLabel(index)]"
+      />
+    </div>
+
+    <AppRank
+      v-if="isShowRank"
+      :list="studentRank"
+      :groove="$store.theme.rank.groove"
+      :panel="$store.theme.rank.panel"
     />
 
     <AppDirector
