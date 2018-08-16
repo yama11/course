@@ -47,7 +47,7 @@ export default {
     >
       <li>{{ typeof $store.appInfo }}</li>
       <li
-        v-for="line in JSON.stringify($store.appInfo).split(',')"
+        v-for="line in JSON.stringify($store.appInfo).slice(1, -1).split(',')"
         :key="line"
       >
         {{ line }}
@@ -89,5 +89,6 @@ export default {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 20px; /* no */
 }
 </style>
