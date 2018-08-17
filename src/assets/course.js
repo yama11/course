@@ -32,6 +32,66 @@ export default {
         video: './course/television/video.mp4',
       },
     },
+  ],
+  learn: [
+    {
+      // 教学场景，目前有两种模式
+      type: 'teaching',
+      mode: 1,
+      scene: {
+        background: './course/teaching01/background.png',
+        foreground: '',
+      },
+      // 模式一，一张卡片多个文字，卡片和文字都是可选
+      src: {
+        card: './course/teaching01/red.png',
+
+        texts: [],
+      },
+    },
+    {
+      type: 'teaching',
+      mode: 1,
+      scene: {
+        background: './course/teaching01/background.png',
+        foreground: '',
+      },
+      // 模式一，一张卡片多个文字，卡片和文字都是可选
+      src: {
+        card: '',
+
+        texts: [
+          'apple',
+        ],
+      },
+    },
+    {
+      type: 'teaching',
+      mode: 2,
+      scene: {
+        background: './course/teaching02/background.png',
+        foreground: '',
+      },
+      // 模式二，卡片文字一对一
+      src: {
+        cards: [
+          {
+            url: './course/card01/red.png',
+            text: 'red',
+          },
+          {
+            url: './course/card01/yellow.png',
+            text: 'yellow',
+          },
+          {
+            url: './course/card01/labi.png',
+            text: 'labi',
+          },
+        ],
+      },
+    },
+  ],
+  game: [
     {
       // 类型：闪卡环节，目前有四种模式
       type: 'flashcard',
@@ -158,7 +218,7 @@ export default {
       },
     },
   ],
-  learn: [
+  summary: [
     {
       // 教学场景，目前有两种模式
       type: 'teaching',
@@ -172,40 +232,14 @@ export default {
         card: './course/teaching01/red.png',
 
         texts: [
-          'hello',
-          'What color is it hai hai hai hai?',
+          "What's this?",
+          'It is an apple.',
+          'What color is it?',
           'It is red.',
         ],
       },
     },
-    {
-      type: 'teaching',
-      mode: 2,
-      scene: {
-        background: './course/teaching02/background.png',
-        foreground: '',
-      },
-      // 模式二，卡片文字一对一
-      src: {
-        cards: [
-          {
-            url: './course/card01/red.png',
-            text: 'red',
-          },
-          {
-            url: './course/card01/yellow.png',
-            text: 'yellow',
-          },
-          {
-            url: './course/card01/labi.png',
-            text: 'labi',
-          },
-        ],
-      },
-    },
   ],
-  game: [],
-  summary: [],
   celebrate: [
     {
       // 结算环节
