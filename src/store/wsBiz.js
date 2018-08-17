@@ -125,7 +125,7 @@ export default {
       // 加入教学分组
       this.wsLabelGroup(this.teachGroupSymbol);
       // 排名分数按相同ID分组取得
-      this.wsLabelGroup(`${this.appInfo.role}_group_${this.appInfo.id}`);
+      this.wsLabelGroup(`${this.appInfo.role}_group_${this.appInfo.room_id}`);
       // 启动心跳
       this.wsPulse();
     },
