@@ -143,9 +143,11 @@ export default {
     equipmentInform(tag) {
       const type = 'flashcard';
 
-      const data = { tag, type, name: this.moduleName };
+      const data = { answer: this.src.answer.select };
 
-      equipmentInform(data);
+      const payload = { tag, type, name: this.moduleName, data };
+
+      equipmentInform(payload);
     },
 
     backgroundShow() {
