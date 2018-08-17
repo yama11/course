@@ -222,11 +222,5 @@ export default {
 </template>
 
 <style lang="postcss">
-.card-foreground__topic{
-  width: 350px;
-  height: 500px;
-  position: relative;
-  left: 300px;
-  top: 200px;
-}
+
 </style>

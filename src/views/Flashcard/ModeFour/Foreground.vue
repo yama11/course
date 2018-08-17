@@ -181,10 +181,9 @@ export default {
 
   <div
     class="
-      card-foreground
+      card-foreground-modefour
       global-card-container
       global-scene
-      card-foreground__topic
     ">
 
     <img
@@ -217,7 +216,7 @@ export default {
 </template>
 
 <style lang="postcss">
-.card-foreground__topic{
-  align-items: flex-start;
+.card-foreground-modefour {
+  align-items: center;
 }
 </style>
