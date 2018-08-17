@@ -183,14 +183,16 @@ export default {
 
   <div
     class="
-      card-foreground-modefour
+      card-foreground
       global-card-container
       global-scene
     ">
 
     <img
       v-if="!isTopic"
-      :src="src.topic">
+      :src="src.topic"
+      class="card-foreground-modefour__topic"
+    >
 
     <div
       v-if="isTopic && !isShowRank">
@@ -218,7 +220,7 @@ export default {
 </template>
 
 <style lang="postcss">
-.card-foreground-modefour {
-  align-items: center;
+.card-foreground-modefour__topic {
+  align-self: center;
 }
 </style>
