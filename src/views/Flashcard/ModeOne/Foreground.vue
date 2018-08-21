@@ -7,12 +7,16 @@
 
 import { equipmentInform } from '@/utils';
 import ForegroundCard from '../components/ForegroundCard';
+import IntervalTime from '../components/IntervalTime';
+import ToolTitle from '../components/ToolTitle';
 
 export default {
   name: 'FlashcardForegroundModeOne',
 
   components: {
     ForegroundCard,
+    IntervalTime,
+    ToolTitle,
   },
 
   props: {
@@ -33,6 +37,10 @@ export default {
       C: 0,
       D: 0,
     },
+
+    title: 'Choose the one you like.',
+
+    isStart: false,
 
     // 控制器执行步进
     index: 0,
@@ -79,6 +87,12 @@ export default {
 
   methods: {
     directorBroadcast() {
+      if (this.index === 0) {
+        this.isStart = true;
+
+        this.director.disabled = true;
+      }
+
       this.index <= 1 && this.equipmentInform(Number(!this.index));
 
       this.index >= 1 && this.backgroundInform();
@@ -90,6 +104,10 @@ export default {
       }
 
       this.index = this.index + 1;
+    },
+
+    changeControl() {
+      this.director.disabled = false;
     },
 
     getLabel(index) {
@@ -138,6 +156,15 @@ export default {
       global-scene
     "
   >
+
+    <IntervalTime
+      :times="10"
+      :is-start="isStart"
+      @finishInterval="changeControl"/>
+
+    <ToolTitle
+      :title="title"/>
+
     <ForegroundCard
       v-for="(item, index) in src.cards"
       :key="item.url"

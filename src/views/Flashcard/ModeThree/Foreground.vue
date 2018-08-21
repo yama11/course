@@ -7,12 +7,16 @@
 
 import { equipmentInform } from '@/utils';
 import ForegroundCard from '../components/ForegroundCard';
+import IntervalTime from '../components/IntervalTime';
+import ToolTitle from '../components/ToolTitle';
 
 export default {
-  name: 'FlashcardForegroundModeFour',
+  name: 'FlashcardForegroundModeThree',
 
   components: {
     ForegroundCard,
+    IntervalTime,
+    ToolTitle,
   },
 
   props: {
@@ -33,6 +37,10 @@ export default {
       C: 0,
       D: 0,
     },
+
+    isStart: false,
+
+    title: 'Listen carefully!',
 
     isTopic: false,
 
@@ -115,6 +123,12 @@ export default {
 
       if (this.currIndex === 0) {
         audio.play();
+
+        this.title = 'Choose the right answer.';
+
+        this.isStart = true;
+
+        this.director.disabled = true;
       }
 
       if (this.currIndex <= 1) {
@@ -125,7 +139,11 @@ export default {
         this.backgroundShow();
       }
 
-      this.currIndex === 1 && this.backgroundInform();
+      if (this.currIndex === 1) {
+        this.title = 'Check the right answer.';
+
+        this.backgroundInform();
+      }
 
       if (this.currIndex >= 2) {
         this.isShowRank = true;
@@ -134,6 +152,10 @@ export default {
       }
 
       this.currIndex = this.currIndex + 1;
+    },
+
+    changeControl() {
+      this.director.disabled = false;
     },
 
     getLabel(index) {
@@ -195,6 +217,21 @@ export default {
       global-scene
     ">
 
+    <div
+      v-show="!isStart"
+      class="card-foreground__audioImg">
+      Ready Go
+    </div>
+
+    <IntervalTime
+      v-show="isStart"
+      :times="20"
+      :is-start="isStart"
+      @finishInterval="changeControl"/>
+
+    <ToolTitle
+      :title="title"/>
+
     <audio ref="audio">
       <source :src="src.topic.audio">
     </audio>
@@ -224,5 +261,16 @@ export default {
 </template>
 
 <style lang="postcss">
-
+.card-foreground__audioImg{
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: white;
+  text-align: center;
+  line-height: 300px;
+  font-size: 50px;
+  left: 300px;
+  top: 200px;
+}
 </style>

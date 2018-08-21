@@ -7,12 +7,16 @@
 
 import { equipmentInform } from '@/utils';
 import ForegroundCard from '../components/ForegroundCard';
+import IntervalTime from '../components/IntervalTime';
+import ToolTitle from '../components/ToolTitle';
 
 export default {
   name: 'FlashcardForegroundModeFour',
 
   components: {
     ForegroundCard,
+    IntervalTime,
+    ToolTitle,
   },
 
   props: {
@@ -33,6 +37,10 @@ export default {
       C: 0,
       D: 0,
     },
+
+    isStart: false,
+
+    title: 'Look at the one below.',
 
     isTopic: false,
 
@@ -109,6 +117,14 @@ export default {
 
   methods: {
     directorBroadcast() {
+      if (this.currIndex === 0) {
+        this.isStart = true;
+
+        this.director.disabled = true;
+
+        this.title = 'Choose the right answer.';
+      }
+
       if (this.currIndex <= 1) {
         this.equipmentInform(Number(!this.currIndex));
 
@@ -117,7 +133,11 @@ export default {
         this.backgroundShow();
       }
 
-      this.currIndex === 1 && this.backgroundInform();
+      if (this.currIndex === 1) {
+        this.backgroundInform();
+
+        this.title = 'Check the right answer.';
+      }
 
       if (this.currIndex >= 2) {
         this.isShowRank = true;
@@ -126,6 +146,10 @@ export default {
       }
 
       this.currIndex = this.currIndex + 1;
+    },
+
+    changeControl() {
+      this.director.disabled = false;
     },
 
     getLabel(index) {
@@ -187,6 +211,15 @@ export default {
       global-card-container
       global-scene
     ">
+
+    <IntervalTime
+      v-show="isStart"
+      :times="20"
+      :is-start="isStart"
+      @finishInterval="changeControl"/>
+
+    <ToolTitle
+      :title="title"/>
 
     <img
       v-if="!isTopic"

@@ -7,12 +7,16 @@
 
 import { equipmentInform } from '@/utils';
 import ForegroundCard from '../components/ForegroundCard';
+import IntervalTime from '../components/IntervalTime';
+import ToolTitle from '../components/ToolTitle';
 
 export default {
   name: 'FlashcardForegroundModeTwo',
 
   components: {
     ForegroundCard,
+    IntervalTime,
+    ToolTitle,
   },
 
   props: {
@@ -43,6 +47,12 @@ export default {
     isJump: false,
 
     isShowRank: false,
+
+    isShow: false,
+
+    isStart: false,
+
+    title: 'Look carefully!',
 
     // 控制器执行步进
     currIndex: 0,
@@ -121,6 +131,8 @@ export default {
   methods: {
     directorBroadcast() {
       if (this.currIndex === 0) {
+        this.isShow = true;
+
         this.intervalJump();
 
         this.director.disabled = true;
@@ -151,12 +163,20 @@ export default {
 
         clearInterval(this.intervalImg);
 
+        this.title = 'Choose the right answer.';
+
+        this.isStart = true;
+
         this.isJump = true;
 
         this.backgroundShow();
-
-        this.director.disabled = false;
       }, 1000);
+    },
+
+    changeControl() {
+      this.director.disabled = false;
+
+      this.title = 'Check the right answer.';
     },
 
     getLabel(index) {
@@ -218,14 +238,24 @@ export default {
       global-scene
     ">
 
+    <IntervalTime
+      v-show="isJump"
+      :times="20"
+      :is-start="isStart"
+      @finishInterval="changeControl"/>
+
+    <ToolTitle
+      :title="title"/>
+
     <div
-      v-if="currIndex > 0 && !isJump"
+      v-if="!isJump"
       class="card-foreground__jump">
       <AppBackgroundCard
         v-for="(item,index) in topicImg"
         v-if="indexImg === index"
         :key="item + index"
-        :card="item"/>
+        :card="item"
+        :active="isShow"/>
     </div>
 
     <div
