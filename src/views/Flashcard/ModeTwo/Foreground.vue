@@ -126,6 +126,8 @@ export default {
       'equipmentCallback',
       this.equipmentCallback,
     );
+
+    clearInterval(this.intervalImg);
   },
 
   methods: {
