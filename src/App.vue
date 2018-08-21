@@ -28,6 +28,12 @@ export default {
             : `${acc}${char}`;
         }, 'View');
     },
+
+    componentKey() {
+      const { step, section } = this.$store.state;
+
+      return `${section}-${step}`;
+    },
   },
 
   created() {
@@ -45,6 +51,7 @@ export default {
   <main id="app">
     <component
       :is="componentName"
+      :key="componentKey"
       :asset="stepAssets"
     />
 
