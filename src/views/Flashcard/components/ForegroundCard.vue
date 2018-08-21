@@ -84,8 +84,8 @@ export default {
 }
 
 .foreground-card__amount > span:last-of-type {
-  margin-left: -1em;
-  padding: 3px .5em 3px 1em;
+  margin-left: -6px;
+  padding: 0px 20px 0px 20px;
   border-radius: 25px;
   background-color: #b38760;
   font-weight: bolder;

@@ -139,7 +139,7 @@ export default {
         this.title = 'Check the right answer.';
       }
 
-      if (this.currIndex >= 2) {
+      if (this.currIndex >= 1) {
         this.isShowRank = true;
 
         this.director.disabled = true;
@@ -228,7 +228,7 @@ export default {
     >
 
     <div
-      v-if="isTopic && !isShowRank">
+      v-if="isTopic">
       <ForegroundCard
         v-for="(item, index) in optionImg"
         :key="item.url"
@@ -238,12 +238,12 @@ export default {
       />
     </div>
 
-    <AppRank
+    <!-- <AppRank
       v-if="isShowRank"
       :list="studentRank"
       :groove="$store.theme.rank.groove"
       :panel="$store.theme.rank.panel"
-    />
+    /> -->
 
     <AppDirector
       :disabled="director.disabled"
@@ -255,5 +255,6 @@ export default {
 <style lang="postcss">
 .card-foreground-modefour__topic {
   align-self: center;
+  border: 5px solid #f28d20;
 }
 </style>

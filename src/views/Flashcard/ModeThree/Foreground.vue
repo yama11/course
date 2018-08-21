@@ -145,7 +145,7 @@ export default {
         this.backgroundInform();
       }
 
-      if (this.currIndex >= 2) {
+      if (this.currIndex >= 1) {
         this.isShowRank = true;
 
         this.director.disabled = true;
@@ -236,7 +236,7 @@ export default {
       <source :src="src.topic.audio">
     </audio>
 
-    <div v-if="isTopic && !isShowRank">
+    <div v-if="isTopic">
       <ForegroundCard
         v-for="(item, index) in optionImg"
         :key="item.url"
@@ -246,12 +246,12 @@ export default {
       />
     </div>
 
-    <AppRank
+    <!-- <AppRank
       v-if="isShowRank"
       :list="studentRank"
       :groove="$store.theme.rank.groove"
       :panel="$store.theme.rank.panel"
-    />
+    /> -->
 
     <AppDirector
       :disabled="director.disabled"
@@ -266,7 +266,8 @@ export default {
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  background: white;
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
   text-align: center;
   line-height: 300px;
   font-size: 50px;

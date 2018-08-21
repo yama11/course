@@ -144,7 +144,7 @@ export default {
 
       this.currIndex === 1 && this.backgroundInform();
 
-      if (this.currIndex >= 2) {
+      if (this.currIndex >= 1) {
         this.isShowRank = true;
 
         this.director.disabled = true;
@@ -260,8 +260,8 @@ export default {
         :active="isShow"/>
     </div>
 
-    <div
-      v-if="isJump && !isShowRank">
+    <!-- <div
+      v-if="isJump">
       <ForegroundCard
         v-for="(item, index) in optionImg"
         :key="item"
@@ -269,7 +269,7 @@ export default {
         :label="getLabel(index)"
         :amount="amounts[getLabel(index)]"
       />
-    </div>
+    </div> -->
 
     <AppRank
       v-if="isShowRank"
