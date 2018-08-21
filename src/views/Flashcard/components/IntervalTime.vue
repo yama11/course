@@ -36,6 +36,10 @@ export default {
     },
   },
 
+  beforeDestroy() {
+    clearInterval(this.intervalStr);
+  },
+
   methods: {
     initInterval() {
       this.intervalStr = setInterval(() => {
@@ -68,7 +72,8 @@ export default {
   width: 250px;
   height: 250px;
   border-radius: 50%;
-  background: white;
+  background: rgba(0,0,0,0.3);
+  color: white;
   line-height: 250px;
   text-align: center;
   position: absolute;

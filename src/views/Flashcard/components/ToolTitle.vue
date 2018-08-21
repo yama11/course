@@ -38,7 +38,8 @@ export default {
 <style lang="postcss">
 .tool-title{
   position: absolute;
-  background: white;
+  background: rgba(0,0,0,0.3);
+  color: white;
   padding: 20px 100px;
   font-size: 45px;
   border-radius: 20px;
