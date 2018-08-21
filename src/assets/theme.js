@@ -59,6 +59,7 @@ export default {
   },
 
   celebrate: {
+    foreground: '',
     background: './theme/celebrate-background.png',
     groove: './theme/celebrate-groove.png',
   },
