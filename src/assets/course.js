@@ -14,9 +14,9 @@ export default {
       },
       src: {
         // 课件课序
-        index: 'PK-1',
+        index: 'K1-119',
         // 课时标题
-        title: 'Letter Aa,Bb',
+        title: 'Family',
       },
     },
   ],
@@ -29,13 +29,12 @@ export default {
         foreground: '',
       },
       src: {
-        video: './course/television/video.mp4',
+        video: './course/television/kids.mp4',
       },
     },
   ],
   learn: [
     {
-      // 教学场景，目前有两种模式
       type: 'teaching',
       mode: 1,
       scene: {
@@ -44,9 +43,9 @@ export default {
       },
       // 模式一，一张卡片多个文字，卡片和文字都是可选
       src: {
-        card: './course/teaching01/red.png',
+        card: './course/teaching02/sister.png',
 
-        texts: [],
+        texts: ['sister'],
       },
     },
     {
@@ -58,11 +57,37 @@ export default {
       },
       // 模式一，一张卡片多个文字，卡片和文字都是可选
       src: {
-        card: '',
+        card: './course/teaching02/brother.png',
 
-        texts: [
-          'apple',
-        ],
+        texts: ['brother'],
+      },
+    },
+    {
+      type: 'teaching',
+      mode: 1,
+      scene: {
+        background: './course/teaching01/background.png',
+        foreground: '',
+      },
+      // 模式一，一张卡片多个文字，卡片和文字都是可选
+      src: {
+        card: './course/teaching02/mom.png',
+
+        texts: ['mom'],
+      },
+    },
+    {
+      type: 'teaching',
+      mode: 1,
+      scene: {
+        background: './course/teaching01/background.png',
+        foreground: '',
+      },
+      // 模式一，一张卡片多个文字，卡片和文字都是可选
+      src: {
+        card: './course/teaching02/dad.png',
+
+        texts: ['dad'],
       },
     },
     {
@@ -76,17 +101,93 @@ export default {
       src: {
         cards: [
           {
-            url: './course/card01/red.png',
-            text: 'red',
+            url: './course/teaching02/sister.png',
+            text: 'sister',
           },
           {
-            url: './course/card01/yellow.png',
-            text: 'yellow',
+            url: './course/teaching02/brother.png',
+            text: 'brother',
           },
           {
-            url: './course/card01/labi.png',
-            text: 'labi',
+            url: './course/teaching02/mom.png',
+            text: 'mom',
           },
+          {
+            url: './course/teaching02/dad.png',
+            text: 'dad',
+          },
+        ],
+      },
+    },
+
+    {
+      type: 'teaching',
+      mode: 1,
+      scene: {
+        background: './course/teaching01/background.png',
+        foreground: '',
+      },
+      // 模式一，一张卡片多个文字，卡片和文字都是可选
+      src: {
+        card: './course/teaching02/mom.png',
+
+        texts: [
+          "Who's she?",
+          "She's my mom.",
+        ],
+      },
+    },
+
+    {
+      type: 'teaching',
+      mode: 1,
+      scene: {
+        background: './course/teaching01/background.png',
+        foreground: '',
+      },
+      // 模式一，一张卡片多个文字，卡片和文字都是可选
+      src: {
+        card: './course/teaching02/dad.png',
+
+        texts: [
+          "Who's he?",
+          "He's my dad.",
+        ],
+      },
+    },
+
+    {
+      type: 'teaching',
+      mode: 1,
+      scene: {
+        background: './course/teaching01/background.png',
+        foreground: '',
+      },
+      // 模式一，一张卡片多个文字，卡片和文字都是可选
+      src: {
+        card: './course/teaching02/brother.png',
+
+        texts: [
+          "Who's he?",
+          "He's my brother.",
+        ],
+      },
+    },
+
+    {
+      type: 'teaching',
+      mode: 1,
+      scene: {
+        background: './course/teaching01/background.png',
+        foreground: '',
+      },
+      // 模式一，一张卡片多个文字，卡片和文字都是可选
+      src: {
+        card: './course/teaching02/sister.png',
+
+        texts: [
+          "Who's she?",
+          "She's my sister.",
         ],
       },
     },
@@ -105,20 +206,20 @@ export default {
       src: {
         cards: [
           {
-            url: './course/teaching01/red.png',
-            text: 'red',
+            url: './course/teaching02/mom.png',
+            text: 'mom',
           },
           {
-            url: './course/card01/yellow.png',
-            text: 'yellow',
+            url: './course/teaching02/dad.png',
+            text: 'dad',
           },
           {
-            url: './course/card01/labi.png',
-            text: 'labi',
+            url: './course/teaching02/brother.png',
+            text: 'brother',
           },
           {
-            url: './course/card01/apple.png',
-            text: 'apple',
+            url: './course/teaching02/sister.png',
+            text: 'sister',
           },
         ],
       },
@@ -135,19 +236,103 @@ export default {
         // 正确答案
         answer: {
           select: 'B',
-          url: './course/card02/select/apple.png',
+          url: './course/teaching02/mom.png',
         },
         // 题目
         topic: [
+          './course/card02/disturb/boy.png',
           './course/card02/disturb/limao.png',
+          './course/card02/disturb/hello.png',
+        ],
+        // 选项
+        options: [
+          './course/card02/disturb/mittens.png',
+          './course/card02/disturb/girl.png',
+          './course/card02/disturb/friend.png',
+        ],
+      },
+    },
+    {
+      type: 'flashcard',
+      mode: 2,
+      scene: {
+        background: './course/card01/background.png',
+        foreground: '',
+      },
+      // 模式二：随机生成三张题目干扰项卡牌和选项干扰项卡牌
+      src: {
+        // 正确答案
+        answer: {
+          select: 'C',
+          url: './course/teaching02/dad.png',
+        },
+        // 题目
+        topic: [
+          './course/card02/disturb/boy.png',
+          './course/card02/disturb/hat.png',
+          './course/card02/disturb/hello.png',
+        ],
+        // 选项
+        options: [
+          './course/card02/disturb/girl.png',
           './course/card02/disturb/siyecao.png',
+          './course/card02/disturb/friend.png',
+        ],
+      },
+    },
+    {
+      type: 'flashcard',
+      mode: 2,
+      scene: {
+        background: './course/card01/background.png',
+        foreground: '',
+      },
+      // 模式二：随机生成三张题目干扰项卡牌和选项干扰项卡牌
+      src: {
+        // 正确答案
+        answer: {
+          select: 'D',
+          url: './course/teaching02/sister.png',
+        },
+        // 题目
+        topic: [
+          './course/card02/disturb/girl.png',
+          './course/card02/disturb/hello.png',
           './course/card02/disturb/yinliao.png',
         ],
         // 选项
         options: [
-          './course/card02/select/red.png',
-          './course/card02/select/yellow.png',
-          './course/card02/select/labi.png',
+          './course/card02/disturb/boy.png',
+          './course/card02/disturb/mittens.png',
+          './course/card02/disturb/hat.png',
+        ],
+      },
+    },
+    {
+      type: 'flashcard',
+      mode: 2,
+      scene: {
+        background: './course/card01/background.png',
+        foreground: '',
+      },
+      // 模式二：随机生成三张题目干扰项卡牌和选项干扰项卡牌
+      src: {
+        // 正确答案
+        answer: {
+          select: 'B',
+          url: './course/teaching02/brother.png',
+        },
+        // 题目
+        topic: [
+          './course/card02/disturb/boy.png',
+          './course/card02/disturb/friend.png',
+          './course/card02/disturb/siyecao.png',
+        ],
+        // 选项
+        options: [
+          './course/card02/disturb/girl.png',
+          './course/card02/disturb/hat.png',
+          './course/card02/disturb/hello.png',
         ],
       },
     },
@@ -162,24 +347,272 @@ export default {
       src: {
         answer: {
           select: 'C',
-          url: './course/card02/select/apple.png',
-          text: 'apple',
+          url: './course/teaching02/mom.png',
+          text: 'mom',
         },
         topic: {
-          audio: './course/home/music.mp3',
+          audio: './course/card03/mom.mp3',
         },
         options: [
           {
-            url: './course/card02/select/labi.png',
-            text: 'red',
+            url: './course/teaching02/dad.png',
+            text: 'dad',
           },
           {
-            url: './course/card02/select/yellow.png',
-            text: 'yellow',
+            url: './course/teaching02/brother.png',
+            text: 'brother',
           },
           {
-            url: './course/card02/disturb/siyecao.png',
-            text: 'labi',
+            url: './course/teaching02/sister.png',
+            text: 'sister',
+          },
+        ],
+      },
+    },
+    {
+      type: 'flashcard',
+      mode: 3,
+      scene: {
+        background: './course/card01/background.png',
+        foreground: '',
+      },
+      // 模式三：根据播放的音乐选择对应的正确卡牌
+      src: {
+        answer: {
+          select: 'B',
+          url: './course/teaching02/sister.png',
+          text: 'sister',
+        },
+        topic: {
+          audio: './course/card03/sister.mp3',
+        },
+        options: [
+          {
+            url: './course/teaching02/mom.png',
+            text: 'mom',
+          },
+          {
+            url: './course/teaching02/dad.png',
+            text: 'dad',
+          },
+          {
+            url: './course/teaching02/brother.png',
+            text: 'brother',
+          },
+        ],
+      },
+    },
+    {
+      type: 'flashcard',
+      mode: 3,
+      scene: {
+        background: './course/card01/background.png',
+        foreground: '',
+      },
+      // 模式三：根据播放的音乐选择对应的正确卡牌
+      src: {
+        answer: {
+          select: 'A',
+          url: './course/teaching02/brother.png',
+          text: 'brother',
+        },
+        topic: {
+          audio: './course/card03/brother.mp3',
+        },
+        options: [
+          {
+            url: './course/teaching02/mom.png',
+            text: 'mom',
+          },
+          {
+            url: './course/teaching02/sister.png',
+            text: 'sister',
+          },
+          {
+            url: './course/teaching02/dad.png',
+            text: 'dad',
+          },
+        ],
+      },
+    },
+    {
+      type: 'flashcard',
+      mode: 3,
+      scene: {
+        background: './course/card01/background.png',
+        foreground: '',
+      },
+      // 模式三：根据播放的音乐选择对应的正确卡牌
+      src: {
+        answer: {
+          select: 'C',
+          url: './course/teaching02/dad.png',
+          text: 'dad',
+        },
+        topic: {
+          audio: './course/card03/dad.mp3',
+        },
+        options: [
+          {
+            url: './course/teaching02/brother.png',
+            text: 'brother',
+          },
+          {
+            url: './course/teaching02/sister.png',
+            text: 'sister',
+          },
+          {
+            url: './course/teaching02/mom.png',
+            text: 'mom',
+          },
+        ],
+      },
+    },
+
+    {
+      type: 'flashcard',
+      mode: 4,
+      scene: {
+        background: './course/card01/background.png',
+        foreground: '',
+      },
+      // 模式四：题目是一张自定义图片，根据图片选择选项
+      src: {
+        answer: {
+          select: 'D',
+          url: './course/teaching02/mom.png',
+        },
+        topic: [
+          './course/card04/mom1.png',
+        ],
+        options: [
+          {
+            url: './course/teaching02/brother.png',
+          },
+          {
+            url: './course/teaching02/dad.png',
+          },
+          {
+            url: './course/teaching02/sister.png',
+          },
+        ],
+      },
+    },
+
+    {
+      type: 'flashcard',
+      mode: 4,
+      scene: {
+        background: './course/card01/background.png',
+        foreground: '',
+      },
+      // 模式四：题目是一张自定义图片，根据图片选择选项
+      src: {
+        answer: {
+          select: 'B',
+          url: './course/teaching02/dad.png',
+        },
+        topic: [
+          './course/card04/dad1.png',
+        ],
+        options: [
+          {
+            url: './course/teaching02/brother.png',
+          },
+          {
+            url: './course/teaching02/sister.png',
+          },
+          {
+            url: './course/teaching02/mom.png',
+          },
+        ],
+      },
+    },
+
+    {
+      type: 'flashcard',
+      mode: 4,
+      scene: {
+        background: './course/card01/background.png',
+        foreground: '',
+      },
+      // 模式四：题目是一张自定义图片，根据图片选择选项
+      src: {
+        answer: {
+          select: 'A',
+          url: './course/teaching02/sister.png',
+        },
+        topic: [
+          './course/card04/sister1.png',
+        ],
+        options: [
+          {
+            url: './course/teaching02/brother.png',
+          },
+          {
+            url: './course/teaching02/dad.png',
+          },
+          {
+            url: './course/teaching02/mom.png',
+          },
+        ],
+      },
+    },
+
+    {
+      type: 'flashcard',
+      mode: 4,
+      scene: {
+        background: './course/card01/background.png',
+        foreground: '',
+      },
+      // 模式四：题目是一张自定义图片，根据图片选择选项
+      src: {
+        answer: {
+          select: 'B',
+          url: './course/teaching02/brother.png',
+        },
+        topic: [
+          './course/card04/brother1.png',
+        ],
+        options: [
+          {
+            url: './course/teaching02/sister.png',
+          },
+          {
+            url: './course/teaching02/dad.png',
+          },
+          {
+            url: './course/teaching02/mom.png',
+          },
+        ],
+      },
+    },
+    {
+      type: 'flashcard',
+      mode: 4,
+      scene: {
+        background: './course/card01/background.png',
+        foreground: '',
+      },
+      // 模式四：题目是一张自定义图片，根据图片选择选项
+      src: {
+        answer: {
+          select: 'B',
+          url: './course/teaching02/dad.png',
+        },
+        topic: [
+          './course/card04/dad.png',
+        ],
+        options: [
+          {
+            url: './course/teaching02/brother.png',
+          },
+          {
+            url: './course/teaching02/sister.png',
+          },
+          {
+            url: './course/teaching02/mom.png',
           },
         ],
       },
@@ -195,24 +628,78 @@ export default {
       src: {
         answer: {
           select: 'D',
-          url: './course/card02/select/apple.png',
-          text: 'apple',
+          url: './course/teaching02/brother.png',
         },
         topic: [
-          './course/card02/select/apple.png',
+          './course/card04/brother.png',
         ],
         options: [
           {
-            url: './course/card02/select/labi.png',
-            text: 'red',
+            url: './course/teaching02/mom.png',
           },
           {
-            url: './course/card02/select/yellow.png',
-            text: 'yellow',
+            url: './course/teaching02/dad.png',
           },
           {
-            url: './course/card02/disturb/siyecao.png',
-            text: 'labi',
+            url: './course/teaching02/sister.png',
+          },
+        ],
+      },
+    },
+    {
+      type: 'flashcard',
+      mode: 4,
+      scene: {
+        background: './course/card01/background.png',
+        foreground: '',
+      },
+      // 模式四：题目是一张自定义图片，根据图片选择选项
+      src: {
+        answer: {
+          select: 'C',
+          url: './course/teaching02/mom.png',
+        },
+        topic: [
+          './course/card04/mom.png',
+        ],
+        options: [
+          {
+            url: './course/teaching02/brother.png',
+          },
+          {
+            url: './course/teaching02/sister.png',
+          },
+          {
+            url: './course/teaching02/dad.png',
+          },
+        ],
+      },
+    },
+    {
+      type: 'flashcard',
+      mode: 4,
+      scene: {
+        background: './course/card01/background.png',
+        foreground: '',
+      },
+      // 模式四：题目是一张自定义图片，根据图片选择选项
+      src: {
+        answer: {
+          select: 'B',
+          url: './course/teaching02/sister.png',
+        },
+        topic: [
+          './course/card04/sister.png',
+        ],
+        options: [
+          {
+            url: './course/teaching02/brother.png',
+          },
+          {
+            url: './course/teaching02/dad.png',
+          },
+          {
+            url: './course/teaching02/mom.png',
           },
         ],
       },
@@ -220,7 +707,6 @@ export default {
   ],
   summary: [
     {
-      // 教学场景，目前有两种模式
       type: 'teaching',
       mode: 1,
       scene: {
@@ -229,13 +715,121 @@ export default {
       },
       // 模式一，一张卡片多个文字，卡片和文字都是可选
       src: {
-        card: './course/teaching01/red.png',
+        card: './course/teaching02/dad.png',
+
+        texts: ['dad'],
+      },
+    },
+    {
+      type: 'teaching',
+      mode: 1,
+      scene: {
+        background: './course/teaching01/background.png',
+        foreground: '',
+      },
+      // 模式一，一张卡片多个文字，卡片和文字都是可选
+      src: {
+        card: './course/teaching02/dad.png',
 
         texts: [
-          "What's this?",
-          'It is an apple.',
-          'What color is it?',
-          'It is red.',
+          "Who's he?",
+          "He's my dad.",
+        ],
+      },
+    },
+
+    {
+      type: 'teaching',
+      mode: 1,
+      scene: {
+        background: './course/teaching01/background.png',
+        foreground: '',
+      },
+      // 模式一，一张卡片多个文字，卡片和文字都是可选
+      src: {
+        card: './course/teaching02/mom.png',
+
+        texts: ['mom'],
+      },
+    },
+    {
+      type: 'teaching',
+      mode: 1,
+      scene: {
+        background: './course/teaching01/background.png',
+        foreground: '',
+      },
+      // 模式一，一张卡片多个文字，卡片和文字都是可选
+      src: {
+        card: './course/teaching02/mom.png',
+
+        texts: [
+          "Who's she?",
+          "She's my mom.",
+        ],
+      },
+    },
+
+    {
+      type: 'teaching',
+      mode: 1,
+      scene: {
+        background: './course/teaching01/background.png',
+        foreground: '',
+      },
+      // 模式一，一张卡片多个文字，卡片和文字都是可选
+      src: {
+        card: './course/teaching02/brother.png',
+
+        texts: ['brother'],
+      },
+    },
+    {
+      type: 'teaching',
+      mode: 1,
+      scene: {
+        background: './course/teaching01/background.png',
+        foreground: '',
+      },
+      // 模式一，一张卡片多个文字，卡片和文字都是可选
+      src: {
+        card: './course/teaching02/brother.png',
+
+        texts: [
+          "Who's he?",
+          "He's my brother.",
+        ],
+      },
+    },
+
+    {
+      type: 'teaching',
+      mode: 1,
+      scene: {
+        background: './course/teaching01/background.png',
+        foreground: '',
+      },
+      // 模式一，一张卡片多个文字，卡片和文字都是可选
+      src: {
+        card: './course/teaching02/sister.png',
+
+        texts: ['sister'],
+      },
+    },
+    {
+      type: 'teaching',
+      mode: 1,
+      scene: {
+        background: './course/teaching01/background.png',
+        foreground: '',
+      },
+      // 模式一，一张卡片多个文字，卡片和文字都是可选
+      src: {
+        card: './course/teaching02/sister.png',
+
+        texts: [
+          "Who's she?",
+          "She's my sister.",
         ],
       },
     },
