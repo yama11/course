@@ -260,7 +260,7 @@ export default {
         :active="isShow"/>
     </div>
 
-    <!-- <div
+    <div
       v-if="isJump">
       <ForegroundCard
         v-for="(item, index) in optionImg"
@@ -269,14 +269,14 @@ export default {
         :label="getLabel(index)"
         :amount="amounts[getLabel(index)]"
       />
-    </div> -->
+    </div>
 
-    <AppRank
+    <!-- <AppRank
       v-if="isShowRank"
       :list="studentRank"
       :groove="$store.theme.rank.groove"
       :panel="$store.theme.rank.panel"
-    />
+    /> -->
 
     <AppDirector
       :disabled="director.disabled"
