@@ -35,7 +35,7 @@ export default {
 
       this.$http.get(`${this.$store.roleAPI}${uri}`)
         .then((data) => {
-          if (data) this.collection = data;
+          if (data) this.students = data;
         })
         .catch((err) => {
           // eslint-disable-next-line
