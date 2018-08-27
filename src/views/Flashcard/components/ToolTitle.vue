@@ -42,7 +42,8 @@ export default {
   color: white;
   padding: 20px 100px;
   font-size: 45px;
-  border-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
   left: 750px;
 }
 </style>
