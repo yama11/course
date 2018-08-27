@@ -225,7 +225,7 @@ export default {
 
     <IntervalTime
       v-show="isStart"
-      :times="20"
+      :times="10"
       :is-start="isStart"
       @finishInterval="changeControl"/>
 
