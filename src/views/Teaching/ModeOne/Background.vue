@@ -33,17 +33,20 @@ export default {
       :src="src.card"
       alt="展示卡"
     >
-    <ul
-      v-if="src.texts && src.texts.length"
-      class="teaching-background__content"
-    >
-      <li
+
+    <div v-if="src.texts && src.texts.length">
+      <ul
         v-for="text in src.texts"
         :key="text"
+        class="teaching-background__content"
       >
-        {{ text }}
-      </li>
-    </ul>
+        <li
+        >
+          {{ text }}
+        </li>
+      </ul>
+    </div>
+
   </div>
 </template>
 
@@ -68,5 +71,6 @@ export default {
   line-height: 1.3em;
   text-align: center;
   font-weight: bold;
+  margin-bottom: 10px;
 }
 </style>
