@@ -235,62 +235,6 @@ export default {
       src: {
         // 正确答案
         answer: {
-          select: 'B',
-          url: './course/teaching02/mom.png',
-        },
-        // 题目
-        topic: [
-          './course/card02/disturb/boy.png',
-          './course/card02/disturb/limao.png',
-          './course/card02/disturb/hello.png',
-        ],
-        // 选项
-        options: [
-          './course/card02/disturb/mittens.png',
-          './course/card02/disturb/girl.png',
-          './course/card02/disturb/friend.png',
-        ],
-      },
-    },
-    {
-      type: 'flashcard',
-      mode: 2,
-      scene: {
-        background: './course/card01/background.png',
-        foreground: '',
-      },
-      // 模式二：随机生成三张题目干扰项卡牌和选项干扰项卡牌
-      src: {
-        // 正确答案
-        answer: {
-          select: 'C',
-          url: './course/teaching02/dad.png',
-        },
-        // 题目
-        topic: [
-          './course/card02/disturb/boy.png',
-          './course/card02/disturb/hat.png',
-          './course/card02/disturb/hello.png',
-        ],
-        // 选项
-        options: [
-          './course/card02/disturb/girl.png',
-          './course/card02/disturb/siyecao.png',
-          './course/card02/disturb/friend.png',
-        ],
-      },
-    },
-    {
-      type: 'flashcard',
-      mode: 2,
-      scene: {
-        background: './course/card01/background.png',
-        foreground: '',
-      },
-      // 模式二：随机生成三张题目干扰项卡牌和选项干扰项卡牌
-      src: {
-        // 正确答案
-        answer: {
           select: 'D',
           url: './course/teaching02/sister.png',
         },
@@ -333,72 +277,6 @@ export default {
           './course/card02/disturb/girl.png',
           './course/card02/disturb/hat.png',
           './course/card02/disturb/hello.png',
-        ],
-      },
-    },
-    {
-      type: 'flashcard',
-      mode: 3,
-      scene: {
-        background: './course/card01/background.png',
-        foreground: '',
-      },
-      // 模式三：根据播放的音乐选择对应的正确卡牌
-      src: {
-        answer: {
-          select: 'C',
-          url: './course/teaching02/mom.png',
-          text: 'mom',
-        },
-        topic: {
-          audio: './course/card03/mom.mp3',
-        },
-        options: [
-          {
-            url: './course/teaching02/dad.png',
-            text: 'dad',
-          },
-          {
-            url: './course/teaching02/brother.png',
-            text: 'brother',
-          },
-          {
-            url: './course/teaching02/sister.png',
-            text: 'sister',
-          },
-        ],
-      },
-    },
-    {
-      type: 'flashcard',
-      mode: 3,
-      scene: {
-        background: './course/card01/background.png',
-        foreground: '',
-      },
-      // 模式三：根据播放的音乐选择对应的正确卡牌
-      src: {
-        answer: {
-          select: 'B',
-          url: './course/teaching02/sister.png',
-          text: 'sister',
-        },
-        topic: {
-          audio: './course/card03/sister.mp3',
-        },
-        options: [
-          {
-            url: './course/teaching02/mom.png',
-            text: 'mom',
-          },
-          {
-            url: './course/teaching02/dad.png',
-            text: 'dad',
-          },
-          {
-            url: './course/teaching02/brother.png',
-            text: 'brother',
-          },
         ],
       },
     },
@@ -642,64 +520,6 @@ export default {
           },
           {
             url: './course/teaching02/sister.png',
-          },
-        ],
-      },
-    },
-    {
-      type: 'flashcard',
-      mode: 4,
-      scene: {
-        background: './course/card01/background.png',
-        foreground: '',
-      },
-      // 模式四：题目是一张自定义图片，根据图片选择选项
-      src: {
-        answer: {
-          select: 'C',
-          url: './course/teaching02/mom.png',
-        },
-        topic: [
-          './course/card04/mom.png',
-        ],
-        options: [
-          {
-            url: './course/teaching02/brother.png',
-          },
-          {
-            url: './course/teaching02/sister.png',
-          },
-          {
-            url: './course/teaching02/dad.png',
-          },
-        ],
-      },
-    },
-    {
-      type: 'flashcard',
-      mode: 4,
-      scene: {
-        background: './course/card01/background.png',
-        foreground: '',
-      },
-      // 模式四：题目是一张自定义图片，根据图片选择选项
-      src: {
-        answer: {
-          select: 'B',
-          url: './course/teaching02/sister.png',
-        },
-        topic: [
-          './course/card04/sister.png',
-        ],
-        options: [
-          {
-            url: './course/teaching02/brother.png',
-          },
-          {
-            url: './course/teaching02/dad.png',
-          },
-          {
-            url: './course/teaching02/mom.png',
           },
         ],
       },
