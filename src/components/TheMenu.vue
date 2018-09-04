@@ -14,7 +14,9 @@ export default {
     },
 
     menuList() {
-      return Object.keys(this.theme);
+      const menus = ['home', 'warmup', 'learn', 'game', 'summary', 'celebrate'];
+
+      return menus;
     },
   },
 
