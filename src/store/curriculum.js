@@ -29,7 +29,9 @@ export default {
     },
 
     stepAssets() {
-      return this.sectionAssets[this.state.step];
+      return this.sectionAssets && this.sectionAssets[this.state.step]
+        ? this.sectionAssets[this.state.step]
+        : {};
     },
   },
 
