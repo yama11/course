@@ -117,12 +117,10 @@ export default {
 
   methods: {
     directorBroadcast() {
-      const audio = this.$refs.audio;
-
-      audio.pause();
+      this.audioPlay(false);
 
       if (this.currIndex === 0) {
-        audio.play();
+        this.audioPlay(true);
 
         this.title = 'Choose the right answer.';
 
@@ -160,6 +158,16 @@ export default {
 
     getLabel(index) {
       return ['A', 'B', 'C', 'D'][index];
+    },
+
+    audioPlay(isPlaying) {
+      const eventType = 'directorAudio';
+
+      const data = {
+        isPlaying,
+      };
+
+      this.$store.syncTeachGroupState(data, eventType);
     },
 
     equipmentInform(tag) {
@@ -232,9 +240,11 @@ export default {
     <ToolTitle
       :title="title"/>
 
-    <audio ref="audio">
+    <AppAudio :src="src.topic.audio"/>
+
+    <!-- <audio ref="audio">
       <source :src="src.topic.audio">
-    </audio>
+    </audio> -->
 
     <div v-if="isTopic">
       <ForegroundCard
