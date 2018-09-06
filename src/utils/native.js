@@ -2,9 +2,7 @@
  * @overview 原生业务
  */
 
-export const nativeMixSound = (switcher, isEffective) => {
-  if (!isEffective) return;
-
+export const nativeMixSound = (switcher) => {
   window.WebFunMixSound
     && window.WebFunMixSound(switcher);
 
