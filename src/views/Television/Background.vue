@@ -34,23 +34,8 @@ export default {
   },
 
   methods: {
-    receiveDirectorState({ data: { state } }) {
+    receiveDirectorState() {
       this.start = true;
-
-      this.videoPlay(state.isPlaying);
-    },
-
-    videoPlay(isPlaying) {
-      isPlaying
-        ? this.$refs.video.play()
-        : this.$refs.video.pause();
-    },
-
-    videoEnded() {
-      const eventType = 'directorCallback';
-      const data = { isPlaying: false };
-
-      this.$store.syncTeachGroupState(data, eventType);
     },
   },
 };
@@ -58,23 +43,14 @@ export default {
 
 <template>
   <div class="television-background">
-    <video
+
+    <AppVideo
       v-show="start"
-      ref="video"
-      :src="src.video"
-      controls
-      preload
-      @ended="videoEnded"
-    />
+      :src="src.video"/>
+
   </div>
 </template>
 
 <style lang="postcss">
-.television-background > video {
-  position: absolute;
-  top: 218px;
-  left: 184px;
-  width: 956px;
-  height: 537px;
-}
+
 </style>
