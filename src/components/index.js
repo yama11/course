@@ -5,7 +5,7 @@ import AppRank from './AppRank';
 import AppScene from './AppScene';
 import TheMenu from './TheMenu';
 import AppVideo from './AppVideo';
-// import AppAudio from './AppAudio';
+import AppAudio from './AppAudio';
 
 const components = {
   AppBackgroundCard,
@@ -15,7 +15,7 @@ const components = {
   AppScene,
   TheMenu,
   AppVideo,
-  // AppAudio,
+  AppAudio,
 };
 
 export default (Vue) => {
