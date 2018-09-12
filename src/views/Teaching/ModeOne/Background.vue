@@ -18,35 +18,48 @@ export default {
   data: () => ({
     active: false,
   }),
+
+  computed: {
+    animations() {
+      return this.$animate.random();
+    },
+
+    texts() {
+      return this.src.texts.filter(text => text)
+        .map((item, index) => {
+          const animate = this.animations[index + this.textAnimationAnchor];
+          const className = `teaching-background__content ${animate}`;
+
+          return { content: item, className };
+        });
+    },
+
+    textAnimationAnchor() {
+      return Number(!!this.src.card);
+    },
+  },
+
+  created() {
+    this.$audio.play();
+  },
 };
 </script>
 
 <template>
-  <div
-    class="
-      global-scene
-      teaching-background
-    "
-  >
+  <div class="global-scene teaching-background">
     <img
       v-if="src.card"
+      :class="animations[0]"
       :src="src.card"
-      alt="展示卡"
+      alt="展示图片"
     >
-
-    <div v-if="src.texts && src.texts.length">
-      <ul
-        v-for="text in src.texts"
-        :key="text"
-        class="teaching-background__content"
-      >
-        <li
-        >
-          {{ text }}
-        </li>
-      </ul>
-    </div>
-
+    <span
+      v-for="item in texts"
+      :key="item.content"
+      :class="item.className"
+    >
+      {{ item.content }}
+    </span>
   </div>
 </template>
 

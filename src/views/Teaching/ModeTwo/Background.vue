@@ -14,6 +14,16 @@ export default {
       required: true,
     },
   },
+
+  computed: {
+    animations() {
+      return this.$animate.settle();
+    },
+  },
+
+  created() {
+    this.$audio.play();
+  },
 };
 </script>
 
@@ -25,7 +35,8 @@ export default {
     "
   >
     <AppBackgroundCard
-      v-for="item in src.cards"
+      v-for="(item, index) in src.cards"
+      :class="animations[index]"
       :key="item.url"
       :card="item.url"
       :text="item.text"
