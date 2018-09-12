@@ -43,3 +43,43 @@
     transform: translate3d(0, 0, 0);
   }
 }
+
+.delay-500 {
+transition--delay: 500ms;
+  animation-delay: 500ms;
+}
+
+.delay-1000 {
+  transition-delay: 1000ms;
+  animation-delay: 1000ms;
+}
+
+.delay-1500 {
+  transition-delay: 1500ms;
+  animation-delay: 1500ms;
+}
+
+.delay-2000 {
+  transition-delay: 2000ms;
+  animation-delay: 2000ms;
+}
+
+.delay-2500 {
+  transition-delay: 2500ms;
+  animation-delay: 2500ms;
+}
+
+.delay-3000 {
+  transition-delay: 3000ms;
+  animation-delay: 3000ms;
+}
+
+.delay-3500 {
+  transition-delay: 3500ms;
+  animation-delay: 3500ms;
+}
+
+.delay-4000 {
+  transition-delay: 4000ms;
+  animation-delay: 4000ms;
+}
