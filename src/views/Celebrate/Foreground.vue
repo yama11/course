@@ -16,6 +16,12 @@ export default {
     students: [],
   }),
 
+  computed: {
+    theme() {
+      return this.$store.theme.rank;
+    },
+  },
+
   created() {
     this.fetchStudentsScore();
   },
@@ -50,7 +56,7 @@ export default {
   <div class="concert-foreground">
     <AppRank
       :list="students"
-      :groove="$store.theme.celebrate.groove"
+      :groove="theme.celebrate.groove"
     />
     <AppDirector
       :disabled = "director.disabled"

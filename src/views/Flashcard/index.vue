@@ -38,18 +38,14 @@ export default {
         foreground: `ForegroundMode${postfix}`,
       };
     },
-
-    theme() {
-      return this.$store.theme.card;
-    },
   },
 };
 </script>
 
 <template>
   <AppScene
-    :foreground="theme.foreground"
-    :background="theme.background"
+    :foreground="asset.scene.foreground"
+    :background="asset.scene.background"
     class="view-flashcard"
   >
     <Component

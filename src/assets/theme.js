@@ -38,15 +38,35 @@ export default {
   },
 
   scene: {
-    foreground: './theme/scene-foreground.png',
-    background: './theme/scene-background.png',
+    home: {
+      foreground: './theme/scene-foreground.png',
+      background: './theme/scene-background.png',
+    },
+    warmup: {
+      background: './course/television/background.png',
+      foreground: '',
+    },
+    learn: {
+      foreground: '',
+      background: '',
+    },
+    game: {
+      foreground: '',
+      background: './theme/card-background.png',
+    },
+    summary: {
+      foreground: '',
+      background: '',
+    },
+    celebrate: {
+      foreground: '',
+      background: './theme/celebrate-background.png',
+    },
   },
 
   card: {
     front: './theme/card-front.png',
     reverse: './theme/card-reverse.png',
-    foreground: '',
-    background: './theme/card-background.png',
   },
 
   student: {
@@ -54,13 +74,13 @@ export default {
   },
 
   rank: {
-    panel: './theme/rank-panel.png',
-    groove: './theme/rank-groove.png',
-  },
-
-  celebrate: {
-    foreground: '',
-    background: './theme/celebrate-background.png',
-    groove: './theme/celebrate-groove.png',
+    practice: {
+      panel: './theme/rank-panel.png',
+      groove: './theme/rank-groove.png',
+    },
+    celebrate: {
+      panel: '',
+      groove: './theme/celebrate-groove.png',
+    },
   },
 };

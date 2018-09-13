@@ -27,6 +27,19 @@ export default {
       default: '',
     },
   },
+
+  computed: {
+    scene() {
+      const { theme, state } = this.$store;
+
+      const scene = theme.scene[state.section];
+
+      return {
+        background: this.background || scene.background,
+        foreground: this.foreground || scene.foreground,
+      };
+    },
+  },
 };
 </script>
 
@@ -34,7 +47,7 @@ export default {
   <div class="global-scene app-scene">
     <AppGround
       v-if="$store.appInfo.scene !== 'foreground'"
-      :scene="background"
+      :scene="scene.background"
       class="scene-backgroud"
     >
       <slot name="background" />
@@ -42,7 +55,7 @@ export default {
 
     <AppGround
       v-if="$store.appInfo.scene !== 'background'"
-      :scene="foreground"
+      :scene="scene.foreground"
       class="scene-foregroud"
     >
       <slot name="foreground" />

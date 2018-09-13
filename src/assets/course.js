@@ -9,8 +9,8 @@ export default {
       type: 'boot',
       // 场景数据：启动页场景来自主题数据
       scene: {
-        background: './theme/scene-background.png',
-        foreground: './theme/scene-foreground.png',
+        background: '',
+        foreground: '',
       },
       src: {
         // 课件课序
@@ -25,7 +25,7 @@ export default {
       // 类型：视频环节
       type: 'television',
       scene: {
-        background: './course/television/background.png',
+        background: '',
         foreground: '',
       },
       src: {
@@ -660,8 +660,8 @@ export default {
       type: 'celebrate',
       // 来自主题数据
       scene: {
-        background: './theme/celebrate-background.png',
         foreground: '',
+        background: '',
       },
     },
   ],
