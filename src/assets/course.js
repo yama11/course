@@ -199,7 +199,7 @@ export default {
       // 模式一
       mode: 1,
       scene: {
-        background: './course/card01/background.png',
+        background: '',
         foreground: '',
       },
       // 模式一：四张有可带文字的卡牌按照投票排名顺序翻转
@@ -228,7 +228,7 @@ export default {
       type: 'flashcard',
       mode: 2,
       scene: {
-        background: './course/card01/background.png',
+        background: '',
         foreground: '',
       },
       // 模式二：随机生成三张题目干扰项卡牌和选项干扰项卡牌
@@ -256,7 +256,7 @@ export default {
       type: 'flashcard',
       mode: 2,
       scene: {
-        background: './course/card01/background.png',
+        background: '',
         foreground: '',
       },
       // 模式二：随机生成三张题目干扰项卡牌和选项干扰项卡牌
@@ -284,7 +284,7 @@ export default {
       type: 'flashcard',
       mode: 3,
       scene: {
-        background: './course/card01/background.png',
+        background: '',
         foreground: '',
       },
       // 模式三：根据播放的音乐选择对应的正确卡牌
@@ -317,7 +317,7 @@ export default {
       type: 'flashcard',
       mode: 3,
       scene: {
-        background: './course/card01/background.png',
+        background: '',
         foreground: '',
       },
       // 模式三：根据播放的音乐选择对应的正确卡牌
@@ -351,7 +351,7 @@ export default {
       type: 'flashcard',
       mode: 4,
       scene: {
-        background: './course/card01/background.png',
+        background: '',
         foreground: '',
       },
       // 模式四：题目是一张自定义图片，根据图片选择选项
@@ -381,7 +381,7 @@ export default {
       type: 'flashcard',
       mode: 4,
       scene: {
-        background: './course/card01/background.png',
+        background: '',
         foreground: '',
       },
       // 模式四：题目是一张自定义图片，根据图片选择选项
@@ -411,7 +411,7 @@ export default {
       type: 'flashcard',
       mode: 4,
       scene: {
-        background: './course/card01/background.png',
+        background: '',
         foreground: '',
       },
       // 模式四：题目是一张自定义图片，根据图片选择选项
@@ -441,7 +441,7 @@ export default {
       type: 'flashcard',
       mode: 4,
       scene: {
-        background: './course/card01/background.png',
+        background: '',
         foreground: '',
       },
       // 模式四：题目是一张自定义图片，根据图片选择选项
@@ -470,7 +470,7 @@ export default {
       type: 'flashcard',
       mode: 4,
       scene: {
-        background: './course/card01/background.png',
+        background: '',
         foreground: '',
       },
       // 模式四：题目是一张自定义图片，根据图片选择选项
@@ -499,7 +499,7 @@ export default {
       type: 'flashcard',
       mode: 4,
       scene: {
-        background: './course/card01/background.png',
+        background: '',
         foreground: '',
       },
       // 模式四：题目是一张自定义图片，根据图片选择选项
