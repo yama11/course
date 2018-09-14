@@ -11,7 +11,7 @@ export default {
   props: {
     card: {
       type: String,
-      required: true,
+      default: '',
     },
 
     text: {
@@ -36,6 +36,7 @@ export default {
       return this.$store.theme.card;
     },
   },
+
 };
 </script>
 
@@ -49,35 +50,31 @@ export default {
       }
     ]"
   >
-    <img
-      v-show="!isTransparent"
-      :src="theme.reverse"
-      class="
-        app-background-card__reverse
-        app-background-card__element
-      "
-      alt="card-reverse"
-    >
+
     <img
       v-show="!isTransparent"
       :src="theme.front"
-      class="
-        app-background-card__front
-        app-background-card__element
-      "
+      class="app-background-card__front"
       alt="card-front"
     >
+    <img
+      v-show="!isTransparent"
+      :src="theme.reverse"
+      class="app-background-card__reverse"
+      alt="card-reverse"
+    >
     <div
+      v-if="card"
       :style="{
         'background-image': `url(${card})`
       }"
-      class="
-        app-background-card__content
-        app-background-card__element
-      "
+      class="app-background-card__content"
     >
       {{ text }}
     </div>
+
+    <slot
+      name="card"/>
   </div>
 </template>
 
@@ -89,15 +86,15 @@ export default {
   transform: perspective(800px) rotateY(180deg); /*no*/
 }
 
-.app-background-card--active {
-  transform: perspective(800px) rotateY(0deg); /*no*/
-}
-
-.app-background-card__element {
+.app-background-card > * {
   position: absolute;
   backface-visibility: hidden;
   width: 100%;
   height: 100%;
+}
+
+.app-background-card--active {
+  transform: perspective(800px) rotateY(0deg); /*no*/
 }
 
 .app-background-card__content {
