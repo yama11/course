@@ -40,6 +40,10 @@ export default {
 
       return newOptions;
     },
+
+    animations() {
+      return this.$animate.settle();
+    },
   },
 
   created() {
@@ -61,6 +65,10 @@ export default {
       this.isActive = data.isActive;
 
       this.isShow = true;
+
+      if (!this.isActive) {
+        this.$audio.play();
+      }
     },
   },
 };
@@ -75,13 +83,16 @@ export default {
       card-background
     "
   >
-    <AppBackgroundCard
+    <div
       v-for="(item,index) in optionImg"
       :key="item.url"
-      :card="item.url"
-      :text="item.text"
-      :active="isActive || src.answer.select === answerList[index]"
-    />
+      :class="animations[index]">
+      <AppBackgroundCard
+        :card="item.url"
+        :text="item.text"
+        :active="isActive || src.answer.select === answerList[index]"
+      />
+    </div>
   </div>
 </template>
 

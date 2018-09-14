@@ -19,6 +19,12 @@ export default {
     activeList: [],
   }),
 
+  computed: {
+    animations() {
+      return this.$animate.settle();
+    },
+  },
+
   created() {
     this.$ws.on(
       'directorBroadcast',
@@ -36,6 +42,8 @@ export default {
   methods: {
     receiveDirectorState({ data: { label } }) {
       this.activeList = [...this.activeList, label];
+
+      this.$audio.play();
     },
 
     getLabel(index) {
@@ -60,13 +68,19 @@ export default {
       card-background
     "
   >
-    <AppBackgroundCard
+
+    <div
       v-for="(item, index) in src.cards"
       :key="item.url"
-      :card="item.url"
-      :text="item.text"
-      :active="activeList.includes(getLabel(index))"
-    />
+      :class="animations[index]">
+
+      <AppBackgroundCard
+        :card="item.url"
+        :text="item.text"
+        :active="activeList.includes(getLabel(index))"/>
+
+    </div>
+
   </div>
 </template>
 

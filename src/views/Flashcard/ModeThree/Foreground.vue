@@ -89,6 +89,14 @@ export default {
 
       return this.$store.score.game_score_rank;
     },
+
+    animations() {
+      return this.$animate.settle();
+    },
+
+    animationsRandom() {
+      return this.$animate.random();
+    },
   },
 
   created() {
@@ -101,6 +109,8 @@ export default {
       'equipmentCallback',
       this.equipmentCallback,
     );
+
+    this.$audio.play();
   },
 
   beforeDestroy() {
@@ -227,7 +237,7 @@ export default {
 
     <div
       v-show="!isStart"
-      class="card-foreground__audioImg">
+      :class="[animationsRandom[1], 'card-foreground__audioImg']">
       Ready Go
     </div>
 
@@ -242,10 +252,6 @@ export default {
 
     <AppAudio :src="src.topic.audio"/>
 
-    <!-- <audio ref="audio">
-      <source :src="src.topic.audio">
-    </audio> -->
-
     <div v-if="isTopic">
       <ForegroundCard
         v-for="(item, index) in optionImg"
@@ -253,6 +259,7 @@ export default {
         :active="checkCardActive(getLabel(index))"
         :label="getLabel(index)"
         :amount="amounts[getLabel(index)]"
+        :class="animations[index]"
       />
     </div>
 

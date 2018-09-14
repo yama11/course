@@ -60,7 +60,7 @@ export default {
 
   computed: {
     topicImg() {
-      const newTopic = this.src.topic;
+      const newTopic = [...this.src.topic];
 
       newTopic.push(this.src.answer.url);
 
@@ -102,6 +102,22 @@ export default {
 
       return this.$store.score.game_score_rank;
     },
+
+    animations() {
+      return this.$animate.settle();
+    },
+
+    intervalAnimations() {
+      const animation = this.$animate.settle()[0];
+
+      return Array(this.optionImg.length)
+        .fill(null)
+        .map((item, index) => `${animation} delay-${1000 * index}`);
+    },
+
+    animationsRandom() {
+      return this.$animate.random();
+    },
   },
 
   created() {
@@ -114,6 +130,8 @@ export default {
       'equipmentCallback',
       this.equipmentCallback,
     );
+
+    this.$audio.play();
   },
 
   beforeDestroy() {
@@ -251,13 +269,23 @@ export default {
 
     <div
       v-if="!isJump"
-      class="card-foreground__jump">
+      :class="[animationsRandom[1], 'card-foreground__jump']">
+
       <AppBackgroundCard
-        v-for="(item,index) in topicImg"
-        v-if="indexImg === index"
-        :key="item + index"
-        :card="item"
-        :active="isShow"/>
+        :active="isShow">
+        <div
+          v-if="isShow"
+          slot="card"
+          class="intervalCard"
+        >
+          <img
+            v-for="(item,index) in topicImg"
+            :key="item + index"
+            :src="item"
+            :class="intervalAnimations[index]">
+        </div>
+      </AppBackgroundCard>
+
     </div>
 
     <div
@@ -268,6 +296,7 @@ export default {
         :active="checkCardActive(getLabel(index))"
         :label="getLabel(index)"
         :amount="amounts[getLabel(index)]"
+        :class="animations[index]"
       />
     </div>
 
@@ -292,7 +321,17 @@ export default {
   top: 200px;
   position: relative;
 }
-.card-foreground__jump>div{
+
+.card-foreground__jump > div{
   position: absolute;
+}
+
+.intervalCard > img{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: white content-box;
+  padding: 20px;
+  border-radius: 5px;
 }
 </style>

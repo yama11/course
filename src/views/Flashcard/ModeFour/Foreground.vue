@@ -89,6 +89,15 @@ export default {
 
       return this.$store.score.game_score_rank;
     },
+
+
+    animations() {
+      return this.$animate.settle();
+    },
+
+    animationsRandom() {
+      return this.$animate.random();
+    },
   },
 
   created() {
@@ -101,6 +110,8 @@ export default {
       'equipmentCallback',
       this.equipmentCallback,
     );
+
+    this.$audio.play();
   },
 
   beforeDestroy() {
@@ -224,7 +235,7 @@ export default {
     <img
       v-if="!isTopic"
       :src="src.topic"
-      class="card-foreground-modefour__topic"
+      :class="[animationsRandom[1], 'card-foreground-modefour__topic']"
     >
 
     <div
@@ -235,6 +246,7 @@ export default {
         :active="checkCardActive(getLabel(index))"
         :label="getLabel(index)"
         :amount="amounts[getLabel(index)]"
+        :class="animations[index]"
       />
     </div>
 

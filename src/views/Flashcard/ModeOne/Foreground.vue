@@ -59,6 +59,10 @@ export default {
 
       return `flashcard-${section}-${step}`;
     },
+
+    animations() {
+      return this.$animate.settle();
+    },
   },
 
   created() {
@@ -71,6 +75,8 @@ export default {
       'equipmentCallback',
       this.equipmentCallback,
     );
+
+    this.$audio.play();
   },
 
   beforeDestroy() {
@@ -171,6 +177,7 @@ export default {
       :active="checkCardActive(getLabel(index))"
       :label="getLabel(index)"
       :amount="amounts[getLabel(index)]"
+      :class="animations[index]"
     />
 
     <AppDirector
