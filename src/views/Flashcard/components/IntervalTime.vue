@@ -28,6 +28,12 @@ export default {
     };
   },
 
+  computed: {
+    animations() {
+      return this.$animate.settle();
+    },
+  },
+
   watch: {
     isStart(val) {
       if (val) {
@@ -62,7 +68,7 @@ export default {
 <template>
   <div
     v-if="seconds > 0"
-    class="interval-time">
+    :class="[animations[3],'interval-time']">
     {{ seconds }} S
   </div>
 </template>

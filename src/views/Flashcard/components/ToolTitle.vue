@@ -21,6 +21,12 @@ export default {
     };
   },
 
+  computed: {
+    animations() {
+      return this.$animate.settle();
+    },
+  },
+
   methods: {
 
   },
@@ -30,7 +36,7 @@ export default {
 
 <template>
   <div
-    class="tool-title">
+    :class="[animations[1],'tool-title']">
     {{ title }}
   </div>
 </template>
