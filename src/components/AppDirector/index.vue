@@ -21,6 +21,17 @@ export default {
     },
   },
 
+  data: () => ({
+    sectionList: [
+      'home',
+      'warmup',
+      'learn',
+      'game',
+      'summary',
+      'celebrate',
+    ],
+  }),
+
   computed: {
     theme() {
       return this.$store.theme.director;
@@ -41,12 +52,12 @@ export default {
     },
 
     sectionFlanks() {
-      const sectionNames = Object.keys(this.$store.assets)
-        .filter(key => this.$store.assets[key].length);
+      const { state, assets } = this.$store;
 
-      const currentSection = this.$store.state.section;
+      const sectionNames = this.sectionList
+        .filter(key => assets[key].length);
 
-      const index = sectionNames.indexOf(currentSection);
+      const index = sectionNames.indexOf(state.section);
 
       return {
         forward: sectionNames[index + 1],

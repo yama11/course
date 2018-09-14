@@ -43,11 +43,10 @@ export default {
 
 <template>
   <div class="television-background">
-
     <AppVideo
       v-show="start"
-      :src="src.video"/>
-
+      :src="src.video"
+    />
   </div>
 </template>
 
