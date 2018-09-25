@@ -14,6 +14,11 @@ export default {
       type: String,
       default: '',
     },
+
+    value: {
+      type: Boolean,
+      required: true,
+    },
   },
 
   created() {
@@ -57,6 +62,7 @@ export default {
 
       nativeMixSound(0);
 
+      this.$emit('input', false);
       this.$store.syncTeachGroupState(data, eventType);
     },
   },
@@ -65,7 +71,10 @@ export default {
 </script>
 
 <template>
-  <div class="app-video">
+  <div
+    v-show="value"
+    class="app-video"
+  >
     <video
       ref="video"
       :src="src"
@@ -77,11 +86,22 @@ export default {
 </template>
 
 <style lang="postcss">
-.app-video > video {
-  position: absolute;
+.app-video {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  /*
   top: 218px;
   left: 184px;
   width: 956px;
   height: 537px;
+  */
+  top: 0;
+  left: 0;
+}
+
+.app-video > video {
+  height: 100%;
+  width: 100%;
 }
 </style>

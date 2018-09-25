@@ -16,7 +16,7 @@ export default {
   },
 
   data: () => ({
-    start: false,
+    playing: false,
   }),
 
   created() {
@@ -35,7 +35,7 @@ export default {
 
   methods: {
     receiveDirectorState() {
-      this.start = true;
+      this.playing = true;
     },
   },
 };
@@ -44,7 +44,7 @@ export default {
 <template>
   <div class="television-background">
     <AppVideo
-      v-show="start"
+      v-model="playing"
       :src="src.video"
     />
   </div>
