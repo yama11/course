@@ -88,16 +88,17 @@ export default {
 <style lang="postcss">
 .app-video {
   position: fixed;
-  width: 100vw;
-  height: 100vh;
-  /*
+  /* 电视显示 */
   top: 218px;
   left: 184px;
   width: 956px;
   height: 537px;
-  */
+  /* 全屏显示
+  width: 100vw;
+  height: 100vh;
   top: 0;
   left: 0;
+  */
 }
 
 .app-video > video {
