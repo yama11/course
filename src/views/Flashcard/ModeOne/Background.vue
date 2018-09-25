@@ -49,13 +49,6 @@ export default {
     getLabel(index) {
       return ['A', 'B', 'C', 'D'][index];
     },
-
-    flashcardModeOneEnd() {
-      const eventType = 'directorCallback';
-      const data = { disabled: true };
-
-      this.$store.syncTeachGroupState(data, eventType);
-    },
   },
 };
 </script>

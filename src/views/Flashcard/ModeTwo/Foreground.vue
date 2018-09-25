@@ -7,7 +7,6 @@
 
 import { equipmentInform } from '@/utils';
 import ForegroundCard from '../components/ForegroundCard';
-import IntervalTime from '../components/IntervalTime';
 import ToolTitle from '../components/ToolTitle';
 
 export default {
@@ -15,7 +14,6 @@ export default {
 
   components: {
     ForegroundCard,
-    IntervalTime,
     ToolTitle,
   },
 
@@ -40,17 +38,9 @@ export default {
 
     selectList: ['A', 'B', 'C', 'D'],
 
-    indexImg: 0,
-
-    intervalImg: '',
-
-    isJump: false,
-
-    isShowRank: false,
-
     isShow: false,
 
-    isStart: false,
+    isShowRank: false,
 
     title: 'Look carefully!',
 
@@ -59,16 +49,6 @@ export default {
   }),
 
   computed: {
-    topicImg() {
-      const newTopic = [...this.src.topic];
-
-      newTopic.push(this.src.answer.url);
-
-      const topicArr = newTopic.sort(() => (Math.random() - 0.5));
-
-      return topicArr;
-    },
-
     optionImg() {
       const selectIndex = this.selectList
         .findIndex(item => item === this.src.answer.select);
@@ -106,18 +86,6 @@ export default {
     animations() {
       return this.$animate.settle();
     },
-
-    intervalAnimations() {
-      const animation = this.$animate.settle()[0];
-
-      return Array(this.optionImg.length)
-        .fill(null)
-        .map((item, index) => `${animation} delay-${1000 * index}`);
-    },
-
-    animationsRandom() {
-      return this.$animate.random();
-    },
   },
 
   created() {
@@ -144,18 +112,14 @@ export default {
       'equipmentCallback',
       this.equipmentCallback,
     );
-
-    clearInterval(this.intervalImg);
   },
 
   methods: {
     directorBroadcast() {
       if (this.currIndex === 0) {
-        this.isShow = true;
-
-        this.intervalJump();
-
         this.director.disabled = true;
+
+        this.showTopic();
       }
 
       this.currIndex <= 1 && this.equipmentInform(Number(!this.currIndex));
@@ -171,32 +135,14 @@ export default {
       this.currIndex = this.currIndex + 1;
     },
 
-    intervalJump() {
-      const lengths = this.topicImg.length - 1;
+    showTopic() {
+      const eventType = 'directorBroadcast';
 
-      this.intervalImg = setInterval(() => {
-        if (this.indexImg < lengths) {
-          this.indexImg = this.indexImg + 1;
+      const data = {
+        showTopic: true,
+      };
 
-          return;
-        }
-
-        clearInterval(this.intervalImg);
-
-        this.title = 'Choose the right answer.';
-
-        this.isStart = true;
-
-        this.isJump = true;
-
-        this.backgroundShow();
-      }, 1000);
-    },
-
-    changeControl() {
-      this.director.disabled = false;
-
-      this.title = 'Check the right answer.';
+      this.$store.syncTeachGroupState(data, eventType);
     },
 
     getLabel(index) {
@@ -213,24 +159,30 @@ export default {
       equipmentInform(payload);
     },
 
-    backgroundShow() {
+    backgroundInform() {
+      this.title = 'Check the right answer.';
+
       const eventType = 'directorBroadcast';
 
       const data = {
-        isJump: this.isJump,
+        isActive: false,
       };
 
       this.$store.syncTeachGroupState(data, eventType);
     },
 
-    backgroundInform() {
-      const eventType = 'directorBroadcast';
+    controlDirectorState({ data }) {
+      if (data.title) {
+        this.title = 'Choose the right answer.';
 
-      const data = {
-        isJump: false,
-      };
+        this.isShow = true;
 
-      this.$store.syncTeachGroupState(data, eventType);
+        return;
+      }
+
+      if (data.fianlTitle) {
+        this.director.disabled = false;
+      }
     },
 
     equipmentCallback({ detail: { name, data } }) {
@@ -258,38 +210,11 @@ export default {
       global-scene
     ">
 
-    <IntervalTime
-      v-show="isJump"
-      :times="10"
-      :is-start="isStart"
-      @finishInterval="changeControl"/>
-
     <ToolTitle
       :title="title"/>
 
     <div
-      v-if="!isJump"
-      :class="[animationsRandom[1], 'card-foreground__jump']">
-
-      <AppBackgroundCard
-        :active="isShow">
-        <div
-          v-if="isShow"
-          slot="card"
-          class="intervalCard"
-        >
-          <img
-            v-for="(item,index) in topicImg"
-            :key="item + index"
-            :src="item"
-            :class="intervalAnimations[index]">
-        </div>
-      </AppBackgroundCard>
-
-    </div>
-
-    <div
-      v-if="isJump">
+      v-if="isShow">
       <ForegroundCard
         v-for="(item, index) in optionImg"
         :key="item"

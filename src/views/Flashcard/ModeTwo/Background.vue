@@ -4,9 +4,14 @@
  *
  * @author suyanping
  */
+import IntervalTime from '../components/IntervalTime';
 
 export default {
   name: 'FlashcardBackgroundModeTwo',
+
+  components: {
+    IntervalTime,
+  },
 
   props: {
     src: {
@@ -16,15 +21,33 @@ export default {
   },
 
   data: () => ({
+    showTopic: false,
+
     isShow: false,
 
     answerList: ['A', 'B', 'C', 'D'],
 
-    isActive: false,
+    isActive: true,
+
+    indexImg: 0,
+
+    intervalImg: '',
+
+    isStart: false,
 
   }),
 
   computed: {
+    topicImg() {
+      const newTopic = [...this.src.topic];
+
+      newTopic.push(this.src.answer.url);
+
+      const topicArr = newTopic.sort(() => (Math.random() - 0.5));
+
+      return topicArr;
+    },
+
     optionImg() {
       const selectIndex = this.answerList
         .findIndex(item => item === this.src.answer.select);
@@ -41,6 +64,18 @@ export default {
     animations() {
       return this.$animate.settle();
     },
+
+    intervalAnimations() {
+      const animation = this.$animate.settle()[0];
+
+      return Array(this.optionImg.length)
+        .fill(null)
+        .map((item, index) => `${animation} delay-${1000 * index}`);
+    },
+
+    animationsRandom() {
+      return this.$animate.random();
+    },
   },
 
   created() {
@@ -55,11 +90,21 @@ export default {
       'directorBroadcast',
       this.receiveDirectorState,
     );
+
+    clearInterval(this.intervalImg);
   },
 
   methods: {
     receiveDirectorState({ data }) {
-      this.isActive = data.isJump;
+      if (data.showTopic) {
+        this.showTopic = true;
+
+        this.intervalJump();
+
+        return;
+      }
+
+      this.isActive = data.isActive;
 
       this.isShow = true;
 
@@ -67,21 +112,91 @@ export default {
         this.$audio.play();
       }
     },
+
+    intervalJump() {
+      const lengths = this.topicImg.length - 1;
+
+      this.intervalImg = setInterval(() => {
+        if (this.indexImg < lengths) {
+          this.indexImg = this.indexImg + 1;
+
+          return;
+        }
+
+        this.showTopic = false;
+
+        this.isStart = true;
+
+        this.isShow = true;
+
+        this.foregroundShow();
+
+        clearInterval(this.intervalImg);
+      }, 1000);
+    },
+
+    foregroundShow() {
+      const eventType = 'directorCallback';
+
+      const data = {
+        title: true,
+      };
+
+      this.$store.syncTeachGroupState(data, eventType);
+    },
+
+    changeControl() {
+      const eventType = 'directorCallback';
+
+      const data = {
+        fianlTitle: true,
+      };
+
+      this.$store.syncTeachGroupState(data, eventType);
+    },
   },
 };
 </script>
 
 <template>
   <div
-    v-if="isShow"
     class="
       global-scene
       global-card-container
       card-background
     "
   >
+
+    <IntervalTime
+      v-show="isStart"
+      :times="10"
+      :is-start="isStart"
+      @finishInterval="changeControl"/>
+
+    <div
+      v-if="!isShow"
+      :class="[animationsRandom[1], 'card-foreground__jump']">
+
+      <AppBackgroundCard
+        :active="showTopic">
+        <div
+          v-if="showTopic"
+          slot="card"
+          class="intervalCard"
+        >
+          <img
+            v-for="(item,index) in topicImg"
+            :key="item + index"
+            :src="item"
+            :class="intervalAnimations[index]">
+        </div>
+      </AppBackgroundCard>
+
+    </div>
+
     <div
       v-for="(item,index) in optionImg"
+      v-show="isShow"
       :key="item"
       :class="animations[index]">
 
@@ -95,5 +210,14 @@ export default {
 </template>
 
 <style lang="postcss">
+.card-foreground__jump{
+  align-items: flex-start;
+  left: 100px;
+  top: 200px;
+  position: relative;
+}
 
+.card-foreground__jump > div{
+  position: absolute;
+}
 </style>

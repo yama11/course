@@ -100,11 +100,6 @@ export default {
   },
 
   created() {
-    this.$ws.on(
-      'directorCallback',
-      this.controlDirectorState,
-    );
-
     window.addEventListener(
       'equipmentCallback',
       this.equipmentCallback,
@@ -114,11 +109,6 @@ export default {
   },
 
   beforeDestroy() {
-    this.$ws.off(
-      'directorCallback',
-      this.controlDirectorState,
-    );
-
     window.removeEventListener(
       'equipmentCallback',
       this.equipmentCallback,
