@@ -55,7 +55,9 @@ export default {
       :asset="stepAssets"
     />
 
-    <TheMenu />
+    <TheMenu
+      v-if="$store.appInfo.scene !== 'background'"
+    />
   </main>
 </template>
 
