@@ -13,6 +13,11 @@ export default {
       type: Object,
       required: true,
     },
+
+    board: {
+      type: String,
+      default: '',
+    },
   },
 
   data() {
@@ -20,13 +25,15 @@ export default {
       isShow: true,
 
       isAnimationEnd: false,
+
+      audioImage: './practice/topic/audio.png',
     };
   },
 
   computed: {
     style() {
       const base = {
-        'background-image': `url(${this.topics.background})`,
+        'background-image': `url(${this.board})`,
       };
 
       return this.isAnimationEnd
@@ -63,7 +70,7 @@ export default {
   },
 
   created() {
-    if (this.topics.audio.url) {
+    if (this.topics.audio) {
       this.audioPlay(true);
     }
 
@@ -122,11 +129,11 @@ export default {
         </div>
 
         <div
-          v-if="topics.audio.picture"
+          v-if="topics.audio"
           class="practice-topic__audio">
-          <img :src="topics.audio.picture">
+          <img :src="audioImage">
 
-          <AppAudio :src="topics.audio.url"/>
+          <AppAudio :src="topics.audio"/>
         </div>
 
       </div>
