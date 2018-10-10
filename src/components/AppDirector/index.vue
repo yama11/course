@@ -4,7 +4,6 @@
  *
  * @author huojinzhao
  */
-
 export default {
   name: 'AppDirector',
 
@@ -21,18 +20,19 @@ export default {
     },
   },
 
-  data: () => ({
-    sectionList: [
-      'home',
-      'warmup',
-      'learn',
-      'game',
-      'summary',
-      'celebrate',
-    ],
-  }),
-
   computed: {
+    forwardState() {
+      return this.$store.forwardState;
+    },
+
+    backwardState() {
+      return this.$store.backwardState;
+    },
+
+    sectionFlanks() {
+      return this.$store.sectionFlanks;
+    },
+
     theme() {
       return this.$store.theme.director;
     },
@@ -51,20 +51,6 @@ export default {
       };
     },
 
-    sectionFlanks() {
-      const { state, assets } = this.$store;
-
-      const sectionNames = this.sectionList
-        .filter(key => assets[key].length);
-
-      const index = sectionNames.indexOf(state.section);
-
-      return {
-        forward: sectionNames[index + 1],
-        backward: sectionNames[index - 1],
-      };
-    },
-
     isBackwardDisabled() {
       const { step, section } = this.$store.state;
 
@@ -72,8 +58,8 @@ export default {
     },
 
     isForwardDisabled() {
-      const { state, sectionAssets } = this.$store;
-      const isStepEnded = state.step >= sectionAssets.length - 1;
+      const { state, steps } = this.$store;
+      const isStepEnded = state.step >= steps.length - 1;
       const isSectionEnded = !this.sectionFlanks.forward;
 
       return isStepEnded && isSectionEnded;
@@ -98,39 +84,13 @@ export default {
     backward() {
       if (this.isBackwardDisabled) return;
 
-      const { state, assets } = this.$store;
-
-      const isSectionStepHead = state.step <= 0;
-
-      const section =
-        isSectionStepHead
-          ? this.sectionFlanks.backward
-          : state.section;
-
-      const step =
-        isSectionStepHead
-          ? assets[section].length - 1
-          : state.step - 1;
-
-      this.$store.syncCurriculumState({ section, step });
+      this.$store.syncCurriculumState({ ...this.backwardState });
     },
 
     forward() {
       if (this.isForwardDisabled) return;
 
-      const { state, sectionAssets } = this.$store;
-
-      const isSectionStepEnd =
-        state.step >= sectionAssets.length - 1;
-
-      const section =
-        isSectionStepEnd
-          ? this.sectionFlanks.forward
-          : state.section;
-
-      const step = isSectionStepEnd ? 0 : state.step + 1;
-
-      this.$store.syncCurriculumState({ section, step });
+      this.$store.syncCurriculumState({ ...this.forwardState });
     },
 
     control() {

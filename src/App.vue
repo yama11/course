@@ -13,12 +13,12 @@ export default {
   components: viewComponents,
 
   computed: {
-    stepAssets() {
-      return this.$store.stepAssets;
+    currentAsset() {
+      return this.$store.currentAsset;
     },
 
     componentName() {
-      return this.stepAssets.type
+      return this.currentAsset.type
         .split('')
         .reduce((acc, char, index) => {
           const isCapital = index === 0;
@@ -52,7 +52,7 @@ export default {
     <component
       :is="componentName"
       :key="componentKey"
-      :asset="stepAssets"
+      :asset="currentAsset"
     />
 
     <TheMenu

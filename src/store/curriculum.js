@@ -18,20 +18,76 @@ export default {
       interaction: null,
     },
 
-    assets: null,
+    sections: [
+      'home',
+      'warmup',
+      'learn',
+      'game',
+      'summary',
+      'celebrate',
+    ],
+
+    assets: {},
 
     theme: null,
   }),
 
   computed: {
-    sectionAssets() {
-      return this.assets ? this.assets[this.state.section] : [];
+    // 前后章节
+    sectionFlanks() {
+      const sections = this.sections
+        .filter(key => this.assets[key].length);
+
+      const index = sections.indexOf(this.state.section);
+
+      return {
+        forward: sections[index + 1],
+        backward: sections[index - 1],
+      };
     },
 
-    stepAssets() {
-      return this.sectionAssets && this.sectionAssets[this.state.step]
-        ? this.sectionAssets[this.state.step]
-        : {};
+    // 当前section资源列表
+    steps() {
+      const { section } = this.state;
+
+      return this.assets[section] || [];
+    },
+
+    // 当前使用资源
+    currentAsset() {
+      const { step } = this.state;
+
+      return this.steps[step] || {};
+    },
+
+    backwardState() {
+      const isSectionStepHead = this.state.step <= 0;
+
+      const section =
+        isSectionStepHead
+          ? this.sectionFlanks.backward
+          : this.state.section;
+
+      const step =
+        isSectionStepHead
+          ? this.assets[section].length - 1
+          : this.state.step - 1;
+
+      return { section, step };
+    },
+
+    forwardState() {
+      const isSectionStepEnd =
+        this.state.step >= this.steps.length - 1;
+
+      const section =
+        isSectionStepEnd
+          ? this.sectionFlanks.forward
+          : this.state.section;
+
+      const step = isSectionStepEnd ? 0 : this.state.step + 1;
+
+      return { section, step };
     },
   },
 
