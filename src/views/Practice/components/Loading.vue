@@ -58,7 +58,7 @@ export default {
         global-backdrop
         practice-loading__progress
       "
-      @animationend="emit('end')"
+      @animationend="$emit('end')"
     />
   </div>
 </template>
