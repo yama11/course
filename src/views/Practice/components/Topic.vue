@@ -102,7 +102,11 @@ export default {
 <template>
   <div
     v-if="isShow"
-    class="practice-topic">
+    class="
+      global-scene
+      global-ground
+      global-backdrop
+      practice-topic">
     <div
       :style="style"
       :class="['practice-topic__board', animations[1]]"/>
