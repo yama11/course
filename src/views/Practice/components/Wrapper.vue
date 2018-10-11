@@ -7,6 +7,7 @@
 
 import PracticeLoading from './Loading';
 import PracticeTopic from './Topic';
+import PracticeTime from './Time';
 
 export default {
   name: 'PracticeWrapper',
@@ -14,6 +15,7 @@ export default {
   components: {
     PracticeLoading,
     PracticeTopic,
+    PracticeTime,
   },
 
   props: {
@@ -29,6 +31,12 @@ export default {
       required: true,
     },
 
+    // 根据Time组件的主题props
+    timeTheme: {
+      type: Array,
+      required: true,
+    },
+
     // 题目资源
     topics: {
       type: Object,
@@ -40,6 +48,8 @@ export default {
     loading: false,
 
     questioning: false,
+
+    timing: false,
   }),
 
   computed: {
@@ -72,7 +82,13 @@ export default {
     topicTerminate() {
       this.questioning = false;
 
-      this.$emit('topicEnd');
+      this.timing = true;
+    },
+
+    timeTerminate() {
+      this.timing = false;
+
+      this.$emit('eventEnd');
     },
   },
 };
@@ -93,6 +109,11 @@ export default {
       :topics="topics"
       @topicEnd="topicTerminate"
     />
+
+    <PracticeTime
+      v-if="timing"
+      :time-theme="timeTheme"
+      @timeEnd="timeTerminate"/>
 
     <slot/>
   </div>
