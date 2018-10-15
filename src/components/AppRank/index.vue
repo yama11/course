@@ -1,20 +1,28 @@
 <script>
 /**
- * @overview 排名展示
+ * @overview 排名展示派生容器
  *
  * @author huojinzhao
  */
 
-import RankItem from './RankItem';
+import ModeOne from './ModeOne';
+import ModeTwo from './ModeTwo';
 
 export default {
   name: 'AppRank',
 
   components: {
-    RankItem,
+    ModeOne,
+    ModeTwo,
   },
 
   props: {
+    // 排名模式
+    mode: {
+      type: Number,
+      default: 1,
+    },
+
     // 排名展示板
     panel: {
       type: String,
@@ -34,6 +42,15 @@ export default {
   },
 
   computed: {
+    componentName() {
+      const list = [
+        'ModeOne',
+        'ModeTwo',
+      ];
+
+      return list[this.mode - 1];
+    },
+
     style() {
       return {
         'background-image': `url(${this.panel})`,
@@ -44,24 +61,16 @@ export default {
 </script>
 
 <template>
-  <div
+  <component
     :style="style"
-    class="global-ground app-rank"
-  >
-    <RankItem
-      v-for="student in list"
-      :key="student.id"
-      :groove="groove"
-      :data="student"
-    />
-  </div>
+    :is="componentName"
+    :list="list"
+    :groove="groove"
+  />
 </template>
 
 <style lang="postcss">
 .app-rank {
-  display: flex;
-  flex-flow: row wrap;
-  align-content: flex-start;
-  padding: 123px 550px 0 100px;
+
 }
 </style>

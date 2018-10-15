@@ -60,7 +60,7 @@ export default {
     },
     celebrate: {
       foreground: '',
-      background: './theme/celebrate-background.png',
+      background: './theme/celebrate-scene-bg2.png',
     },
   },
 
@@ -80,7 +80,7 @@ export default {
     },
     celebrate: {
       panel: '',
-      groove: './theme/celebrate-groove.png',
+      groove: './theme/celebrate-head-bg2.png',
     },
   },
 };

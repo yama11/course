@@ -55,6 +55,7 @@ export default {
 <template>
   <div class="concert-foreground">
     <AppRank
+      :mode="2"
       :list="students"
       :groove="theme.celebrate.groove"
     />
