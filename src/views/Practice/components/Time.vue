@@ -9,6 +9,7 @@ export default {
   name: 'PracticeTime',
 
   props: {
+    // 倒计时主题
     timeTheme: {
       type: Array,
       default: () => [],
@@ -17,13 +18,7 @@ export default {
 
   data: () => ({
     timeIndex: 0,
-
-    timeOut: '',
   }),
-
-  beforeDestroy() {
-    clearInterval(this.timeOut);
-  },
 
   created() {
     this.startDownTime();
@@ -31,16 +26,16 @@ export default {
 
   methods: {
     startDownTime() {
-      this.timeOut = setInterval(() => {
+      setTimeout(() => {
         const timeLength = this.timeTheme.length;
 
         if (this.timeIndex < timeLength) {
           this.timeIndex += 1;
 
+          this.startDownTime();
+
           return;
         }
-
-        clearInterval(this.timeOut);
 
         this.$emit('timeEnd');
       }, 1000);
