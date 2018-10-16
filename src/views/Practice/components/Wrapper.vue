@@ -42,6 +42,12 @@ export default {
       type: Object,
       required: true,
     },
+
+    // 场景图
+    scene: {
+      type: String,
+      default: '',
+    },
   },
 
   data: () => ({
@@ -60,6 +66,12 @@ export default {
       const forwardAsset = assets[section][step];
 
       return forwardAsset.type !== 'practice';
+    },
+
+    style() {
+      return {
+        'background-image': `url(${this.scene})`,
+      };
     },
   },
 
@@ -95,7 +107,14 @@ export default {
 </script>
 
 <template>
-  <div class="practice-wrapper">
+  <div
+    :style="style"
+    class="
+      practice-wrapper
+      global-ground
+      global-backdrop
+    "
+  >
     <PracticeLoading
       v-if="loading"
       :scene="loadingTheme.scene"
@@ -113,7 +132,8 @@ export default {
     <PracticeTime
       v-if="timing"
       :time-theme="timeTheme"
-      @timeEnd="timeTerminate"/>
+      @timeEnd="timeTerminate"
+    />
 
     <slot/>
   </div>
@@ -121,6 +141,6 @@ export default {
 
 <style lang="postcss">
 .practice-wrapper {
-
+  z-index: 1;
 }
 </style>
