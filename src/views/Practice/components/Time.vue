@@ -50,34 +50,19 @@ export default {
 </script>
 
 <template>
-  <div class="practice-time">
-    <div
-      v-for="(item,index) in timeTheme"
-      v-if="index === timeIndex"
-      :key="index"
-      class="practice-time__block">
-      <img :src="item">
-    </div>
-  </div>
+  <img
+    v-show="timeTheme[timeIndex]"
+    :src="timeTheme[timeIndex]"
+    class="practice-time"
+  >
 </template>
 
 <style lang="postcss">
 .practice-time {
   width: 239px;
   height: 250px;
-  position: relative;
+  position: absolute;
   left: 800px;
   top: 460px;
-}
-
-.practice-time__block{
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
-.practice-time__block img{
-  width: 100%;
-  height: 100%;
 }
 </style>
