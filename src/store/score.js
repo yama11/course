@@ -6,7 +6,11 @@
 
 export default {
   data() {
-    return { score: this.scoreInit() };
+    return {
+      score: this.scoreInit(),
+
+      parctice_score: [],
+    };
   },
 
   created() {
@@ -39,6 +43,20 @@ export default {
       const score = data ? JSON.parse(data) : null;
 
       this.score = score || this.scoreInit();
+    },
+
+    // 更新 parctice 类型游戏的排名
+    parcticeScore(info) {
+      const indexExit = this.parctice_score
+        .findIndex(item => item.id === info.id);
+
+      indexExit === -1
+        ? this.parctice_score.push({
+          name: info.name,
+          id: info.id,
+          score: 1,
+        })
+        : this.parctice_score[indexExit].score += 1;
     },
   },
 };
