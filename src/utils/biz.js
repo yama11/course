@@ -8,17 +8,16 @@ export function createOptions(
   answer = 'A',
   options = [],
 ) {
+  const list = [...options];
+
   const selectIndex = ['A', 'B', 'C', 'D'];
 
-  const newOptions = options.reduce((acc, option, index) => {
-    const result = selectIndex[index] === answer
-      ? [content, option] : [option];
+  return Array(options.length + 1).fill(null)
+    .map((item, index) => {
+      const select = selectIndex[index];
 
-    return [...acc, ...result];
-  }, []);
+      const url = answer === select ? content : list.pop();
 
-  return newOptions.map((item, index) => ({
-    select: selectIndex[index],
-    url: item,
-  }));
+      return { select, url };
+    });
 }
