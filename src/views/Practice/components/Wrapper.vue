@@ -5,6 +5,7 @@
  * @author huojinzhao
  */
 
+import { equipmentInform } from '@/utils';
 import PracticeLoading from './Loading';
 import PracticeTopic from './Topic';
 import PracticeTime from './Time';
@@ -68,6 +69,12 @@ export default {
       return forwardAsset.type !== 'practice';
     },
 
+    moduleName() {
+      const { step, section } = this.$store.state;
+
+      return `practice-${section}-${step}`;
+    },
+
     style() {
       return {
         'background-image': `url(${this.scene})`,
@@ -77,6 +84,18 @@ export default {
 
   created() {
     this.init();
+
+    window.addEventListener(
+      'equipmentCallback',
+      this.equipmentCallback,
+    );
+  },
+
+  beforeDestroy() {
+    window.removeEventListener(
+      'equipmentCallback',
+      this.equipmentCallback,
+    );
   },
 
   methods: {
@@ -95,12 +114,38 @@ export default {
       this.questioning = false;
 
       this.timing = true;
+
+      this.equipmentInform(this.timing);
     },
 
     timeTerminate() {
       this.timing = false;
 
+      this.equipmentInform(this.timing);
+
       this.$emit('eventEnd');
+    },
+
+    equipmentInform(tag) {
+      const type = 'practice';
+
+      const data = { tag, type, name: this.moduleName };
+
+      equipmentInform(data);
+    },
+
+    equipmentCallback({ detail: { name, student } }) {
+      if (name !== this.moduleName) return;
+
+      this.$emit('studentInfo', student);
+
+      const { state: { step, section }, assets } = this.$store;
+
+      const { src: { answer } } = assets[section][step];
+
+      if (answer === student.answer) {
+        this.$store.parcticeScore(student);
+      }
     },
   },
 };
