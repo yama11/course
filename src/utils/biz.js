@@ -10,10 +10,15 @@ export function createOptions(
 ) {
   const selectIndex = ['A', 'B', 'C', 'D'];
 
-  return options.reduce((acc, option, index) => {
+  const newOptions = options.reduce((acc, option, index) => {
     const result = selectIndex[index] === answer
       ? [content, option] : [option];
 
     return [...acc, ...result];
   }, []);
+
+  return newOptions.map((item, index) => ({
+    select: selectIndex[index],
+    url: item,
+  }));
 }
