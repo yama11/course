@@ -37,3 +37,17 @@
   flex-wrap: wrap;
   padding-right: 60vw;
 }
+
+.global-position-right,
+.global-position-left {
+  position: absolute;
+  top: 0;
+}
+
+.global-position-left {
+  left: 0;
+}
+
+.global-position-right {
+  right: 0;
+}

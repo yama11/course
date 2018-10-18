@@ -77,7 +77,7 @@ export default {
   border-radius: 18px;
   height: 36px;
   width: 824px;
-  bottom: 70px;
+  bottom: 80px;
   animation-name: practiceLoadingProgress;
   animation-timing-function: ease-in-out;
 }

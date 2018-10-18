@@ -34,20 +34,10 @@ export default {
     },
   },
 
-  data() {
-    return {
-
-    };
-  },
-
   computed: {
     styleColor() {
       return { color: this.textColor };
     },
-  },
-
-  methods: {
-
   },
 };
 </script>
@@ -56,25 +46,27 @@ export default {
 <template>
   <div class="practice-role">
 
-    <span
-      class="practice-role__text">{{ name }}</span>
+    <span class="practice-role__text">
+      {{ name }}
+    </span>
 
     <span
       v-if="selectResult"
       :style="styleColor"
-      class="practice-role__score">
+      class="practice-role__score"
+    >
       +1
     </span>
 
-    <img
-      :src="imgUrl">
+    <img :src="imgUrl">
   </div>
 </template>
 
 
 <style lang="postcss">
 .practice-role{
-  display: inline-block；
+  display: inline-block;
+  position: relative;
 }
 
 .practice-role__text{

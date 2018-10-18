@@ -115,11 +115,12 @@ export default {
       global-backdrop
     "
   >
-    <PracticeLoading
-      v-if="loading"
-      :scene="loadingTheme.scene"
-      :bar="loadingTheme.bar"
-      @end="loadingTerminate"
+    <slot/>
+
+    <PracticeTime
+      v-if="timing"
+      :time-theme="timeTheme"
+      @timeEnd="timeTerminate"
     />
 
     <PracticeTopic
@@ -129,13 +130,12 @@ export default {
       @topicEnd="topicTerminate"
     />
 
-    <PracticeTime
-      v-if="timing"
-      :time-theme="timeTheme"
-      @timeEnd="timeTerminate"
+    <PracticeLoading
+      v-if="loading"
+      :scene="loadingTheme.scene"
+      :bar="loadingTheme.bar"
+      @end="loadingTerminate"
     />
-
-    <slot/>
   </div>
 </template>
 
