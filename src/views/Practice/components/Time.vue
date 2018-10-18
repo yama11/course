@@ -27,7 +27,7 @@ export default {
   methods: {
     startDownTime() {
       setTimeout(() => {
-        const timeLength = this.timeTheme.length;
+        const timeLength = this.timeTheme.length - 1;
 
         if (this.timeIndex < timeLength) {
           this.timeIndex += 1;
