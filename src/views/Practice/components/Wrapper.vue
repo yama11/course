@@ -60,13 +60,47 @@ export default {
   }),
 
   computed: {
+    typeCounter() {
+      const {
+        currentAsset: { type, mode },
+        steps,
+        state: { step },
+      } = this.$store;
+
+      let current = 1;
+      let rest = 0;
+
+      steps.slice(0, step)
+        .reverse()
+        .every(({
+          type: stepType,
+          mode: stepMode,
+        }) => {
+          if (stepType !== type || stepMode !== mode) return false;
+
+          current += 1;
+
+          return true;
+        });
+
+      steps
+        .slice(step + 1)
+        .every(({
+          type: stepType,
+          mode: stepMode,
+        }) => {
+          if (stepType !== type || stepMode !== mode) return false;
+
+          rest += 1;
+
+          return true;
+        });
+
+      return { current, length: current + rest };
+    },
+
     isFirstMeet() {
-      const { assets, forwardState } = this.$store;
-      const { step, section } = forwardState;
-
-      const forwardAsset = assets[section][step];
-
-      return forwardAsset.type !== 'practice';
+      return this.typeCounter.current === 1;
     },
 
     moduleName() {
@@ -124,6 +158,14 @@ export default {
       this.equipmentInform(this.timing);
 
       this.$emit('eventEnd');
+
+      setTimeout(this.forward, 2000);
+    },
+
+    forward() {
+      const forwardState = this.$store.forwardState;
+
+      this.$store.syncCurriculumState({ ...forwardState });
     },
 
     equipmentInform(tag) {
@@ -164,6 +206,7 @@ export default {
       v-show="questioning"
       :board="topicTheme.board"
       :topics="topics"
+      :counter="typeCounter"
       @topicEnd="topicTerminate"
     />
 
@@ -179,5 +222,11 @@ export default {
 <style lang="postcss">
 .practice-wrapper {
   z-index: 1;
+}
+
+.practice-wrapper__counter {
+  position: fixed;
+  font-size: 20px;
+  color: red;
 }
 </style>

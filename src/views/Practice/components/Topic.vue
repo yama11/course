@@ -18,6 +18,11 @@ export default {
       type: String,
       default: '',
     },
+
+    counter: {
+      type: Object,
+      required: true,
+    },
   },
 
   data() {
@@ -66,6 +71,15 @@ export default {
 
     animations() {
       return this.$animate.settle();
+    },
+
+    counterImage() {
+      const { current, length } = this.counter;
+
+      return {
+        current: `./practice/counter/${current}.png`,
+        length: `./practice/counter/${length}.png`,
+      };
     },
   },
 
@@ -140,6 +154,15 @@ export default {
           <AppAudio :src="topics.audio"/>
         </div>
 
+        <div
+          class="
+            practice-topic__counter
+            global-backdrop
+          "
+        >
+          <img :src="counterImage.current">
+          <img :src="counterImage.length">
+        </div>
       </div>
     </div>
   </div>
@@ -192,6 +215,18 @@ export default {
 .practice-topic__audio>img{
   width: 300px;
   height: 150px;
+}
+
+.practice-topic__counter {
+  position: fixed;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  top: 38px;
+  right: 29px;
+  width: 255px;
+  height: 107px;
+  background-image: url(/practice/counter/groove.png);
 }
 
 @keyframes practice-topic-leave {

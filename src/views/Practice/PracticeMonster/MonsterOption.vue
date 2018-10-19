@@ -1,6 +1,6 @@
 <script>
 /**
- * @overview 大怪兽 - 选项组件
+ * @overview 打怪兽 - 选项组件
  *
  * @author huojinzhao
  */
