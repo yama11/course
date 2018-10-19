@@ -138,14 +138,6 @@ export default {
       if (name !== this.moduleName) return;
 
       this.$emit('studentInfo', student);
-
-      const { state: { step, section }, assets } = this.$store;
-
-      const { src: { answer } } = assets[section][step];
-
-      if (answer === student.answer) {
-        this.$store.parcticeScore(student);
-      }
     },
   },
 };
