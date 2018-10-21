@@ -40,7 +40,7 @@ export default {
         }
 
         this.$emit('timeEnd');
-      }, 1000);
+      }, 2000);
     },
   },
 };
