@@ -46,7 +46,6 @@ export default {
   <div
     :style="cssRoot"
     class="
-      global-scene
       global-ground
       global-backdrop
       practice-loading
@@ -66,18 +65,16 @@ export default {
 <style lang="postcss">
 .practice-loading {
   position: fixed;
-  display: flex;
-  justify-content: center;
-  padding-left: 74px;
   z-index: 100;
 }
 
 .practice-loading__progress {
   position: absolute;
+  left: 586px;
+  bottom: 80px;
   border-radius: 18px;
   height: 36px;
   width: 824px;
-  bottom: 80px;
   animation-name: practiceLoadingProgress;
   animation-timing-function: ease-in-out;
 }
