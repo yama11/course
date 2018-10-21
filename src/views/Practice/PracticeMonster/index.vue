@@ -73,6 +73,8 @@ export default {
     isKill(value) {
       if (value) {
         this.scene = './practice/monster/bg-terminate.png';
+
+        this.$audio.play();
       }
     },
   },

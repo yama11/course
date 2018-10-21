@@ -22,6 +22,8 @@ export default {
 
   created() {
     this.startDownTime();
+
+    this.$audio.play();
   },
 
   methods: {
