@@ -159,13 +159,13 @@ export default {
 
       this.timing = true;
 
-      this.equipmentInform(this.timing);
+      this.equipmentInform(1);
     },
 
     timeTerminate() {
       this.timing = false;
 
-      this.equipmentInform(this.timing);
+      this.equipmentInform(0);
 
       this.$emit('eventEnd');
 
