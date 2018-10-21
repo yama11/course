@@ -23,6 +23,11 @@ export default {
       type: Object,
       required: true,
     },
+
+    questioning: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   data() {
@@ -84,10 +89,6 @@ export default {
   },
 
   created() {
-    if (this.topics.audio) {
-      this.audioPlay(true);
-    }
-
     setTimeout(() => {
       this.isAnimationEnd = true;
 
@@ -108,6 +109,12 @@ export default {
       };
 
       this.$store.syncTeachGroupState(data, eventType);
+    },
+
+    playAudio() {
+      if (this.topics.audio) {
+        this.audioPlay(true);
+      }
     },
   },
 };

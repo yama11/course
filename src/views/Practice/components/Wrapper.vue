@@ -117,8 +117,6 @@ export default {
   },
 
   created() {
-    this.init();
-
     window.addEventListener(
       'equipmentCallback',
       this.equipmentCallback,
@@ -132,16 +130,28 @@ export default {
     );
   },
 
+  mounted() {
+    this.init();
+  },
+
   methods: {
     init() {
-      this.isFirstMeet
-        ? (this.loading = true)
-        : (this.questioning = true);
+      if (this.isFirstMeet) {
+        this.loading = true;
+
+        return;
+      }
+
+      this.questioning = true;
+      this.$refs.raceTopic.playAudio();
     },
 
     loadingTerminate() {
       this.loading = false;
+
       this.questioning = true;
+
+      this.$refs.raceTopic.playAudio();
     },
 
     topicTerminate() {
@@ -204,6 +214,7 @@ export default {
 
     <PracticeTopic
       v-show="questioning"
+      ref="raceTopic"
       :board="topicTheme.board"
       :topics="topics"
       :counter="typeCounter"
