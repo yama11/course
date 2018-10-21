@@ -162,6 +162,9 @@ export default {
         </div>
 
         <div
+          :style="{
+            'background-image': 'url(./practice/counter/groove.png)',
+          }"
           class="
             practice-topic__counter
             global-backdrop
@@ -233,7 +236,6 @@ export default {
   right: 29px;
   width: 255px;
   height: 107px;
-  background-image: url(/practice/counter/groove.png);
 }
 
 @keyframes practice-topic-leave {
