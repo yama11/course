@@ -87,6 +87,10 @@ export default {
     checkAnswer(answer) {
       return answer === this.src.answer.select && this.isKill;
     },
+
+    receiveStudentAnswer(student) {
+      this.practicers.push(student);
+    },
   },
 };
 </script>
@@ -99,7 +103,7 @@ export default {
     :topics="src.topic"
     :scene="scene"
     class="practice-monster"
-    @student-info="student => practicers.push(student)"
+    @studentInfo="receiveStudentAnswer"
     @eventEnd="setHunter(true)"
   >
     <MonsterSwirl v-show="isKill" />
