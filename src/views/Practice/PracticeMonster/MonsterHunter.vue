@@ -41,6 +41,7 @@ export default {
           top: `${y}px`,
           left: `${x}px`,
           'transition-delay': `${Math.random()}s`,
+          'background-image': 'url(./practice/monster/star.png)',
         } : null;
     },
   },
@@ -113,17 +114,12 @@ export default {
 }
 
 .practice-monster__attack {
-  display: block;
   position: fixed;
-  transition: all 1.5s ease-in;
-}
-
-.practice-monster__attack::before {
-  content: url(/practice/monster/star.png);
   display: block;
   width: 57px;
   height: 54px;
   animation: practiceMonsterStar 1s linear infinite;
+  transition: all 1.5s ease-in;
 }
 
 @keyframes practiceMonsterStar {
