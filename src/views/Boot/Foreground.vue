@@ -5,8 +5,6 @@
  * @author huojinzhao
  */
 
-import { isAikaolaEnv } from '@/utils';
-
 export default {
   name: 'BootForeground',
 
@@ -21,16 +19,12 @@ export default {
     director: {
       disabled: true,
     },
-
-    isAikaolaEnv,
   }),
 };
 </script>
 
 <template>
-  <div
-    slot="boot-foreground"
-  >
+  <div class="boot-foreground">
     <div class="boot-foreground__title">
       <span class="boot-foreground__title--index">
         {{ src.index }}
@@ -39,20 +33,6 @@ export default {
         {{ src.title }}
       </span>
     </div>
-
-    <!-- 测试使用 -->
-    <ul
-      v-show="!isAikaolaEnv"
-      class="boot-foreground__dev-infomation"
-    >
-      <li>{{ typeof $store.appInfo }}</li>
-      <li
-        v-for="line in JSON.stringify($store.appInfo).slice(1, -1).split(',')"
-        :key="line"
-      >
-        {{ line }}
-      </li>
-    </ul>
 
     <AppDirector :disabled = "director.disabled" />
   </div>
@@ -82,13 +62,5 @@ export default {
   font-weight: 600;
   color: #fff;
   font-style: italic;
-}
-
-.boot-foreground__dev-infomation > li {
-  width: 15em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: 20px; /* no */
 }
 </style>

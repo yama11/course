@@ -36,12 +36,13 @@ export default {
 
     <Foreground
       slot="foreground"
-      :src="asset.src"/>
+      :src="asset.src"
+    />
   </AppScene>
 </template>
 
 <style lang="postcss">
-.view-concert {
+.view-cocos {
 
 }
 </style>
