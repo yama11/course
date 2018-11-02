@@ -36,13 +36,18 @@ export default {
   computed: {
     style() {
       const { x, y } = this.position;
-      return x || y
-        ? {
-          top: `${y}px`,
-          left: `${x}px`,
-          'transition-delay': `${Math.random()}s`,
-          'background-image': 'url(./practice/monster/star.png)',
-        } : null;
+
+      if (!x && !y) return null;
+
+      const image = 'url(./practice/monster/star.png)';
+      const delay = `${Math.random() / 3}s`;
+
+      return {
+        top: `${y}px`,
+        left: `${x}px`,
+        'transition-delay': delay,
+        'background-image': image,
+      };
     },
   },
 
@@ -119,7 +124,7 @@ export default {
   width: 57px;
   height: 54px;
   animation: practiceMonsterStar 1s linear infinite;
-  transition: all 1.5s ease-in;
+  transition: all 1s ease-in;
 }
 
 @keyframes practiceMonsterStar {

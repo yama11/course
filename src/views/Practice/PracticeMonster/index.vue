@@ -56,9 +56,12 @@ export default {
 
     practicers: [],
 
-    isKill: false,
+    isHunt: false,
 
-    scene: './practice/monster/bg-active.png',
+    scene: [
+      './practice/monster/bg-active.png',
+      './practice/monster/bg-terminate.png',
+    ],
   }),
 
   computed: {
@@ -67,25 +70,27 @@ export default {
 
       return createOptions(answer.url, answer.select, options);
     },
-  },
 
-  watch: {
-    isKill(value) {
-      if (value) {
-        this.scene = './practice/monster/bg-terminate.png';
-
-        this.$audio.play();
-      }
+    isKill() {
+      return this.scene.length === 1;
     },
   },
 
   methods: {
-    setHunter(value) {
-      this.isKill = value;
+    beginHunt() {
+      this.isHunt = true;
+
+      setTimeout(this.killMonster, 1400);
+    },
+
+    killMonster() {
+      this.scene.shift();
+
+      this.$audio.play();
     },
 
     checkAnswer(answer) {
-      return answer === this.src.answer.select && this.isKill;
+      return answer === this.src.answer.select && this.isHunt;
     },
 
     receiveStudentAnswer(student) {
@@ -104,12 +109,12 @@ export default {
     :scene="scene"
     class="practice-monster"
     @studentInfo="receiveStudentAnswer"
-    @eventEnd="setHunter(true)"
+    @eventEnd="beginHunt"
   >
     <MonsterSwirl v-show="isKill" />
 
     <MonsterAnswer
-      v-show="!isKill"
+      v-show="!isHunt"
       :options="options"
     />
 

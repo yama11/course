@@ -46,8 +46,8 @@ export default {
 
     // 场景图
     scene: {
-      type: String,
-      default: '',
+      type: [String, Array],
+      default: () => [],
     },
   },
 
@@ -110,9 +110,12 @@ export default {
     },
 
     style() {
-      return {
-        'background-image': `url(${this.scene})`,
-      };
+      const url = []
+        .concat(this.scene)
+        .map(image => `url(${image})`)
+        .join(',');
+
+      return { 'background-image': url };
     },
   },
 
@@ -169,7 +172,7 @@ export default {
 
       this.$emit('eventEnd');
 
-      setTimeout(this.forward, 2000);
+      setTimeout(this.forward, 2500);
     },
 
     forward() {

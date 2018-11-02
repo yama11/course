@@ -127,10 +127,25 @@ export default {
       global-scene
       global-ground
       global-backdrop
-      practice-topic">
+      practice-topic"
+  >
     <div
       :style="style"
-      :class="['practice-topic__board', animations[1]]"/>
+      :class="['practice-topic__board', animations[1]]"
+    />
+
+    <div
+      :style="{
+        'background-image': 'url(./practice/counter/groove.png)',
+      }"
+      class="
+        practice-topic__counter
+        global-backdrop
+      "
+    >
+      <img :src="counterImage.current">
+      <img :src="counterImage.length">
+    </div>
 
     <div
       :style="questionStyle"
@@ -160,19 +175,6 @@ export default {
 
           <AppAudio :src="topics.audio"/>
         </div>
-
-        <div
-          :style="{
-            'background-image': 'url(./practice/counter/groove.png)',
-          }"
-          class="
-            practice-topic__counter
-            global-backdrop
-          "
-        >
-          <img :src="counterImage.current">
-          <img :src="counterImage.length">
-        </div>
       </div>
     </div>
   </div>
@@ -180,8 +182,8 @@ export default {
 
 <style lang="postcss">
 .practice-topic {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background: rgba(0, 0, 0, 0.4);
 }
 
@@ -213,7 +215,7 @@ export default {
   align-items: center;
 }
 
-.practice-topic__picture>img{
+.practice-topic__picture > img{
   width: 200px;
   height: 200px;
 }
@@ -222,7 +224,7 @@ export default {
   font-size: 60px;
 }
 
-.practice-topic__audio>img{
+.practice-topic__audio > img{
   width: 300px;
   height: 150px;
 }
