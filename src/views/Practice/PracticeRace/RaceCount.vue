@@ -60,7 +60,7 @@ export default {
         { transform: 'skew(-30deg)', 'margin-left': '80px' },
         { transform: 'skew(-8deg)', 'margin-left': '40px' },
         { transform: 'skew(15deg)', 'margin-left': '20px' },
-        { transform: 'skew(30deg)', 'margin-left': '30px' },
+        { transform: 'skew(30deg)', 'margin-left': '60px' },
       ],
 
       roleOne: [
@@ -100,6 +100,12 @@ export default {
       return this.selectIndex === index;
     },
 
+    checkEmoji(index) {
+      if (!this.showResult) return false;
+
+      return this.selectIndex !== index;
+    },
+
     getEachStudent(index) {
       const select = this.selectList[index];
 
@@ -131,7 +137,9 @@ export default {
         <PracticeRole
           :name="roleItem.name"
           :img-url="roleImg[(roleIndex % 5)]"
-          :select-result="checkAnswer(index)"/>
+          :select-result="checkAnswer(index)"
+          :emoji-result="checkEmoji(index)"
+          text-color="gold"/>
 
       </div>
 
@@ -143,7 +151,7 @@ export default {
 <style lang="postcss">
 .race-count{
   display: flex;
-  justify-content: space-between;
+  align-items: flex-end;
   position: absolute;
   bottom: 0;
 }
@@ -153,9 +161,17 @@ export default {
   left: 15px;
 }
 
+.firRole .race-count__block{
+  width: 455px;
+}
+
 .secRole{
   width: 1530px;
   left: 200px;
+}
+
+.secRole .race-count__block{
+  width: 765px;
 }
 
 .race-count__block{

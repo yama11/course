@@ -27,11 +27,23 @@ export default {
       default: false,
     },
 
+    // 是否显示cry表情
+    emojiResult: {
+      type: Boolean,
+      default: false,
+    },
+
     // 字体颜色
     textColor: {
       type: String,
       default: 'red',
     },
+  },
+
+  data() {
+    return {
+      emojiUrl: './practice/race/cry.png',
+    };
   },
 
   computed: {
@@ -58,6 +70,11 @@ export default {
       +1
     </span>
 
+    <img
+      v-if="emojiResult"
+      :src="emojiUrl"
+      class="practice-role__emoji">
+
     <img :src="imgUrl">
   </div>
 </template>
@@ -77,5 +94,14 @@ export default {
   position: absolute;
   top: 15px;
   right: 2px;
+}
+
+.practice-role__emoji{
+  display: inline-block;
+  width: 25px;
+  height: 20px !important;
+  position: absolute;
+  left: 24px;
+  top: 45px;
 }
 </style>

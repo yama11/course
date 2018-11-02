@@ -8,6 +8,7 @@ import { createOptions } from '@/utils';
 import PracticeWrapper from '../components/Wrapper';
 import RaceOption from './RaceOption';
 import RaceCount from './RaceCount';
+import RaceStone from './RaceStone';
 
 export default {
   name: 'PracticeRace',
@@ -16,6 +17,7 @@ export default {
     PracticeWrapper,
     RaceOption,
     RaceCount,
+    RaceStone,
   },
 
   props: {
@@ -143,10 +145,11 @@ export default {
       :select-index="selectIndex"
       :show-result="showResult"/>
 
-    <div
+    <RaceStone
       v-if="showResult"
-      :style="lightCss"
-      class="practice-race__light"/>
+      :option-card="optionCard"
+      :select-index="selectIndex"/>
+
   </PracticeWrapper>
 
 </template>
