@@ -26,8 +26,8 @@ export default {
 
 <template>
   <div
-    slot="cocos-foregrount"
-    class="cocos-foregrount">
+    slot="cocos-foreground"
+    class="cocos-foreground">
     <iframe
       v-if="src.foreground"
       :src="src.foreground"
@@ -37,7 +37,7 @@ export default {
 </template>
 
 <style lang="postcss">
-.cocos-foregrount {
+.cocos-foreground {
   width: 100%;
   height: 100%;
 }
