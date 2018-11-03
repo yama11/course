@@ -23,64 +23,48 @@ export default {
   },
 
   data: () => ({
-    position: {
-      x: 0,
-      y: 0,
+    style: {
+      'transition-delay': `${Math.random() / 3}s`,
+      'background-image': 'url(practice/monster/star.png)',
     },
-
-    isHunt: false,
 
     isCorrect: false,
   }),
 
   computed: {
-    style() {
-      const { x, y } = this.position;
-
-      if (!x && !y) return null;
-
-      const image = 'url(./practice/monster/star.png)';
-      const delay = `${Math.random() / 3}s`;
-
-      return {
-        top: `${y}px`,
-        left: `${x}px`,
-        'transition-delay': delay,
-        'background-image': image,
-      };
+    classes() {
+      return this.result
+        ? 'practice-monster__attack--active'
+        : 'practice-monster__attack--inactive';
     },
   },
 
   watch: {
     result(value) {
-      if (value) {
-        this.isHunt = true;
-        this.$nextTick(this.hunt);
-      }
+      value && this.attack();
     },
   },
 
   mounted() {
-    this.position = this.$refs.root.getBoundingClientRect();
+    this.initAttack();
   },
 
   methods: {
-    hunt() {
-      const {
-        width: deltaX,
-        height: deltaY,
-      } = this.$refs.star.getBoundingClientRect();
+    initAttack() {
+      const { x, y } = this.$refs.root.getBoundingClientRect();
+      const top = `${y}px`;
+      const left = `${x}px`;
 
-      const x = (window.innerWidth / 2) - deltaX;
-      const y = (window.innerHeight / 2) - deltaY;
+      this.style = { top, left, ...this.style };
+    },
 
-      this.position = { x, y };
+    attack() {
+      const { top, left, ...rest } = this.style;
+
+      this.style = rest;
     },
 
     kill() {
-      this.$emit('change');
-
-      this.isHunt = false;
       this.isCorrect = true;
     },
   },
@@ -93,10 +77,12 @@ export default {
     class="practice-monster__hunter"
   >
     <span
-      v-if="isHunt"
-      ref="star"
+      :class="classes"
       :style="style"
-      class="practice-monster__attack"
+      class="
+        global-backdrop
+        practice-monster__attack
+      "
       @transitionend="kill"
     />
     <Practicer
@@ -123,11 +109,22 @@ export default {
   display: block;
   width: 57px;
   height: 54px;
-  animation: practiceMonsterStar 1s linear infinite;
-  transition: all 1s ease-in;
+  transition: all 1s .2s ease-in;
+  animation: p-m-rotate .5s linear infinite;
 }
 
-@keyframes practiceMonsterStar {
+.practice-monster__attack--inactive {
+  visibility: hidden;
+}
+
+.practice-monster__attack--active {
+  visibility: visible;
+  opacity: 0;
+  left: calc(50vw - 28px);
+  top: calc(50vh - 27px);
+}
+
+@keyframes p-m-rotate {
   to {
     transform: rotate(360deg);
   }
