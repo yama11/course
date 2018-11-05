@@ -6,6 +6,12 @@
 
 export default {
 
+  data: () => ({
+    pulseTime: Date.now(),
+
+    echoTime: Date.now(),
+  }),
+
   computed: {
     selfSymbol() {
       const { role, id } = this.appInfo;
@@ -27,11 +33,17 @@ export default {
   },
 
   created() {
-    // 重新配置ws
-    this.$ws.boot({ success: this.wsRegister });
+    this.wsInit();
   },
 
   methods: {
+    // 重新配置ws
+    wsInit() {
+      const onopen = this.wsRegister;
+
+      this.$ws.connect({ lifecycle: { onopen } });
+    },
+
     /**
      * @overview ws心跳
      */
@@ -42,7 +54,26 @@ export default {
         data: 'ping',
       });
 
+      this.pulseTime = Date.now();
+
       setTimeout(this.wsPulse, 10 ** 4);
+    },
+
+    wsSentry() {
+      this.$ws.on('pulse_success', () => {
+        this.echoTime = Date.now();
+      });
+
+      const sentry = () => {
+        const interval = this.pulseTime - this.echoTime;
+        const threshold = 2.5 * (10 ** 4);
+
+        (interval > threshold) && this.$ws.connect();
+
+        setTimeout(sentry, 2 * (10 ** 4));
+      };
+
+      sentry();
     },
 
     /**
@@ -125,9 +156,11 @@ export default {
       // 加入教学分组
       this.wsLabelGroup(this.teachGroupSymbol);
       // 排名分数按相同ID分组取得
-      this.wsLabelGroup(`${this.appInfo.role}_group_${this.appInfo.room_id}`);
+      this.wsLabelGroup(`${this.appInfo.role}_group_${this.appInfo.id}`);
       // 启动心跳
       this.wsPulse();
+      // 断线重连机制
+      this.wsSentry();
     },
   },
 };

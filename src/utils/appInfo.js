@@ -4,11 +4,11 @@
  * @author    huojinzhao
  */
 
-import { decodeQuery, decodeHash } from 'enslaver-uri';
+import { Uri } from 'enslaver-browser';
 import { nativeGetAppInfo } from './native';
 
 const hrefInfo =
-  decodeQuery(window.location.search);
+  Uri.decodeQuery(window.location.search);
 
 const randomNum =
   Number(((Math.random() + 9) * (10 ** 10)).toFixed(0));
@@ -38,7 +38,7 @@ const appInfo =
 const prodInfo = appInfo || devInfo;
 
 export default {
-  token: decodeHash(window.location.hash),
+  token: Uri.decodeHash(window.location.hash),
   ...prodInfo,
   ...hrefInfo,
 };

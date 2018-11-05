@@ -12,12 +12,11 @@
   },
   "dependencies": {
     "core-js": "^2.5.7",
-    "enslaver-http": "^0.1.9",
-    "enslaver-uri": "^0.1.2",
-    "enslaver-ws": "^0.1.9",
+    "enslaver-browser": "0.0.4",
     "vue": "^2.5.2"
   },
   "devDependencies": {
+    "@babel/runtime": "^7.1.2",
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.22.1",
     "babel-eslint": "^8.2.1",
