@@ -23,10 +23,7 @@ export default {
   },
 
   data: () => ({
-    style: {
-      'transition-delay': `${Math.random() / 3}s`,
-      'background-image': 'url(practice/monster/star.png)',
-    },
+    style: {},
 
     isCorrect: false,
   }),
@@ -41,27 +38,20 @@ export default {
 
   watch: {
     result(value) {
-      value && this.attack();
+      value && setTimeout(this.attack, (Math.random() / 2) * 1000);
     },
-  },
-
-  mounted() {
-    this.initAttack();
   },
 
   methods: {
-    initAttack() {
-      const { x, y } = this.$refs.root.getBoundingClientRect();
-      const top = `${y}px`;
-      const left = `${x}px`;
-
-      this.style = { top, left, ...this.style };
-    },
-
     attack() {
-      const { top, left, ...rest } = this.style;
+      const { innerWidth, innerHeight } = window;
+      const { left, top } = this.$refs.root.getBoundingClientRect();
+      const targetX = (innerWidth / 2) - ((28 / 1920) * innerWidth);
+      const targetY = (innerHeight / 2) - ((27 / 1920) * innerHeight);
+      const x = targetX - left;
+      const y = targetY - top;
 
-      this.style = rest;
+      this.style = { transform: `translate(${x}px, ${y}px)` };
     },
 
     kill() {
@@ -76,15 +66,19 @@ export default {
     ref="root"
     class="practice-monster__hunter"
   >
-    <span
+    <div
       :class="classes"
       :style="style"
-      class="
-        global-backdrop
-        practice-monster__attack
-      "
+      class="practice-monster__attack"
       @transitionend="kill"
-    />
+    >
+      <span
+        :style="{
+          'background-image': 'url(practice/monster/star.png)',
+        }"
+        class="global-backdrop"
+      />
+    </div>
     <Practicer
       v-bind="this.$attrs"
       :select-result="isCorrect"
@@ -94,6 +88,7 @@ export default {
 
 <style lang="postcss">
 .practice-monster__hunter {
+  position: relative;
   width: 160px;
   height: 160px;
 }
@@ -105,12 +100,12 @@ export default {
 }
 
 .practice-monster__attack {
-  position: fixed;
-  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 57px;
   height: 54px;
-  transition: all 1s .2s ease-in;
-  animation: p-m-rotate .5s linear infinite;
+  transition: all 1.2s ease-in;
 }
 
 .practice-monster__attack--inactive {
@@ -120,8 +115,13 @@ export default {
 .practice-monster__attack--active {
   visibility: visible;
   opacity: 0;
-  left: calc(50vw - 28px);
-  top: calc(50vh - 27px);
+}
+
+.practice-monster__attack > span {
+  display: block;
+  width: 100%;
+  height: 100%;;
+  animation: p-m-rotate .5s linear infinite;
 }
 
 @keyframes p-m-rotate {
