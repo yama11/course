@@ -113,16 +113,16 @@ div.app-rank__leaders--mode2 {
   }
 
   .app-rank-item:first-child {
-    padding-top: 138px;
-    left: 671px;
-  }
-
-  .app-rank-item:nth-child(2) {
     padding-top: 85px;
     left: 855px;
   }
 
-  .app-rank-item:last-child {
+  .app-rank-item:nth-child(2) {
+    padding-top: 138px;
+    left: 671px;
+  }
+
+  .app-rank-item:nth-child(3) {
     padding-top: 180px;
     left: 1040px;
   }
