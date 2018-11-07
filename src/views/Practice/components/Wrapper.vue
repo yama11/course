@@ -5,7 +5,7 @@
  * @author huojinzhao
  */
 
-import { equipmentInform } from '@/utils';
+import { equipmentInform, AudioPlayer } from '@/utils';
 import PracticeLoading from './Loading';
 import PracticeTopic from './Topic';
 import PracticeTime from './Time';
@@ -57,6 +57,10 @@ export default {
     questioning: false,
 
     timing: false,
+
+    backVideo: new AudioPlayer('./audio/game.mp3'),
+
+    cheerVideo: new AudioPlayer('./audio/cheer.mp3'),
   }),
 
   computed: {
@@ -131,6 +135,9 @@ export default {
       'equipmentCallback',
       this.equipmentCallback,
     );
+
+    this.backVideo.pause();
+    this.cheerVideo.pause();
   },
 
   mounted() {
@@ -162,6 +169,8 @@ export default {
 
       this.timing = true;
 
+      this.playVideo();
+
       this.equipmentInform(1);
     },
 
@@ -170,9 +179,12 @@ export default {
 
       this.equipmentInform(0);
 
+
       this.$emit('eventEnd');
 
-      setTimeout(this.forward, 2500);
+      this.cheerVideo.play();
+
+      // setTimeout(this.forward, 2500);
     },
 
     forward() {
@@ -192,7 +204,13 @@ export default {
     equipmentCallback({ detail: { name, student } }) {
       if (name !== this.moduleName) return;
 
+      this.$audio.play();
+
       this.$emit('studentInfo', student);
+    },
+
+    playVideo() {
+      this.backVideo.play();
     },
   },
 };

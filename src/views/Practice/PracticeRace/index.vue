@@ -112,8 +112,6 @@ export default {
   methods: {
     eventDeal() {
       this.showResult = true;
-
-      this.$audio.play();
     },
 
     getStudentList(data) {

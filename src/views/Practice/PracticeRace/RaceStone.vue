@@ -85,13 +85,13 @@ export default {
   display: inline-block;
   width: 350px;
   height: 400px;
-  animation: drop-in 1s ease-in, drop-out 1s 1s ease-out forwards;
+  animation: drop-in 2s ease-in, drop-out 2s 2s ease-out forwards;
 }
 
 .race-stone__block > img{
   width: 450px;
   height: 100%;
-  animation: horizen-tremble .4s 1s ease-in infinite;
+  animation: horizen-tremble .4s 2s ease-in infinite;
 }
 
 @keyframes horizen-tremble {
@@ -100,11 +100,11 @@ export default {
   }
 
   25% {
-    transform: translate3d(-200px, 0, 0);
+    transform: translate3d(-100px, 0, 0);
   }
 
   75% {
-    transform: translate3d(200px, 0, 0);
+    transform: translate3d(100px, 0, 0);
   }
 
   to {

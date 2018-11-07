@@ -18,12 +18,12 @@ export default {
 
   data: () => ({
     timeIndex: 0,
+
+    videoSrc: './audio/10085.mp3',
   }),
 
   created() {
     this.startDownTime();
-
-    this.$audio.play();
   },
 
   methods: {
@@ -33,6 +33,8 @@ export default {
 
         if (this.timeIndex < timeLength) {
           this.timeIndex += 1;
+
+          this.$audio.play(this.videoSrc);
 
           this.startDownTime();
 
