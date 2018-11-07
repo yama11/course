@@ -24,19 +24,18 @@ export function createOptions(
 export class AudioPlayer {
   constructor(src = '') {
     this.audio = new Audio();
-    this.src = src;
+    this.audio.src = src;
   }
 
-  load(src = this.src) {
+  load(src = this.audio.src) {
     this.pause();
-    this.src = src;
+    this.audio.src = src;
 
     return this;
   }
 
   play(src) {
     this.load(src);
-
     this.audio.play();
 
     return this;
