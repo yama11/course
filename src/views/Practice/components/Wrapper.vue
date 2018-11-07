@@ -184,7 +184,7 @@ export default {
 
       this.cheerVideo.play();
 
-      setTimeout(this.forward, 2500);
+      setTimeout(this.forward, 4000);
     },
 
     forward() {
