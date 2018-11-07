@@ -2,7 +2,6 @@
  * @overview 综合事务
  */
 
-// eslint-disable-next-line
 export function createOptions(
   content,
   answer = 'A',
@@ -20,4 +19,32 @@ export function createOptions(
 
       return { select, url };
     });
+}
+
+export class AudioPlayer {
+  constructor(src = '') {
+    this.audio = new Audio();
+    this.src = src;
+  }
+
+  load(src = this.src) {
+    this.pause();
+    this.src = src;
+
+    return this;
+  }
+
+  play(src) {
+    this.load(src);
+
+    this.audio.play();
+
+    return this;
+  }
+
+  pause() {
+    this.audio.pause();
+
+    return this;
+  }
 }

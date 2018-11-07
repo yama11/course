@@ -1,4 +1,6 @@
-const audio = new Audio();
+import { AudioPlayer } from '@/utils';
+
+const audio = new AudioPlayer();
 
 const assetsList = [
   './audio/10085.mp3',
@@ -19,7 +21,12 @@ export default {
   },
 
   play(url = this.random()[0]) {
-    audio.src = url;
+    audio.load(url);
+
     audio.play();
+  },
+
+  pause() {
+    audio.pause();
   },
 };
