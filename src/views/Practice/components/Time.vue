@@ -28,21 +28,19 @@ export default {
 
   methods: {
     startDownTime() {
-      setTimeout(() => {
-        const timeLength = this.timeTheme.length - 1;
+      const timeLength = this.timeTheme.length - 1;
 
-        if (this.timeIndex < timeLength) {
-          this.timeIndex += 1;
-
-          this.$audio.play(this.videoSrc);
-
-          this.startDownTime();
-
-          return;
-        }
-
+      if (this.timeIndex >= timeLength) {
         this.$emit('timeEnd');
-      }, 2000);
+
+        return;
+      }
+
+      this.timeIndex += 1;
+
+      this.$audio.play(this.videoSrc);
+
+      setTimeout(this.startDownTime, 2000);
     },
   },
 };
