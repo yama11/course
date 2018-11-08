@@ -6,3 +6,4 @@ export { default as ViewFlashcard } from './Flashcard';
 export { default as ViewPractice } from './Practice';
 export { default as ViewTeaching } from './Teaching';
 export { default as ViewTelevision } from './Television';
+export { default as ViewEmpty } from './Empty';
