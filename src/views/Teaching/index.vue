@@ -1,12 +1,13 @@
 <script>
 /**
- * @overview 闪卡场景
+ * @overview 教学场景
  *
  * @author huojinzhao
  */
 
 import ModeOne from './ModeOne';
 import ModeTwo from './ModeTwo';
+import ModeThree from './ModeThree';
 
 export default {
   name: 'ViewTeaching',
@@ -14,6 +15,7 @@ export default {
   components: {
     ...ModeOne,
     ...ModeTwo,
+    ...ModeThree,
   },
 
   props: {
