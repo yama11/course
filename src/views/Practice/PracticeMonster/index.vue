@@ -105,7 +105,7 @@ export default {
     :loading-theme="loadingTheme"
     :topic-theme="topicTheme"
     :time-theme="timeTheme"
-    :topics="src.topic"
+    :src="src"
     :scene="scene"
     class="practice-monster"
     @studentInfo="receiveStudentAnswer"

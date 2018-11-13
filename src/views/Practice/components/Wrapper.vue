@@ -39,7 +39,7 @@ export default {
     },
 
     // 题目资源
-    topics: {
+    src: {
       type: Object,
       required: true,
     },
@@ -196,9 +196,11 @@ export default {
     equipmentInform(tag) {
       const type = 'practice';
 
-      const data = { tag, type, name: this.moduleName };
+      const data = { answer: this.src.answer.select };
 
-      equipmentInform(data);
+      const payload = { tag, type, name: this.moduleName, data };
+
+      equipmentInform(payload);
     },
 
     equipmentCallback({ detail: { name, student } }) {
@@ -237,7 +239,7 @@ export default {
       v-show="questioning"
       ref="raceTopic"
       :board="topicTheme.board"
-      :topics="topics"
+      :topics="src.topic"
       :counter="typeCounter"
       @topicEnd="topicTerminate"
     />
