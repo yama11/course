@@ -5,14 +5,14 @@
  * @author yehaifeng
  */
 import ModeOne from './ModeOne';
-// import ModeTwo from './ModeTwo';
+import ModeTwo from './ModeTwo';
 
 export default {
   name: 'ViewCocos',
 
   components: {
     ...ModeOne,
-    // ...ModeTwo,
+    ...ModeTwo,
   },
 
   props: {
