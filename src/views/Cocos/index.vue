@@ -26,7 +26,9 @@ export default {
     componentName() {
       const list = ['One', 'Two', 'Three', 'Four'];
 
-      const postfix = list[this.asset.mode - 1];
+      const mode = this.asset.mode ? this.asset.mode : 1;
+
+      const postfix = list[mode - 1];
 
       return {
         background: `BackgroundMode${postfix}`,
