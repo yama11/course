@@ -1,12 +1,12 @@
 <script>
 /**
- * @overview cocos动画 - 后景
+ * @overview cocos动画模式一 - 后景
  *
  * @author yehaifeng
  */
 
 export default {
-  name: 'CocosBackground',
+  name: 'CocosBackgroundModeOne',
 
   props: {
     src: {
@@ -20,7 +20,6 @@ export default {
 
 <template>
   <div
-    slot="cocos-background"
     class="cocos-background"
   >
 

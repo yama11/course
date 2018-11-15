@@ -1,12 +1,12 @@
 <script>
 /**
- * @overview cocos动画 - 前景
+ * @overview cocos动画模式一 - 前景
  *
  * @author yehaifeng
  */
 
 export default {
-  name: 'CocosForeground',
+  name: 'CocosForegroundModeOne',
 
   props: {
     src: {

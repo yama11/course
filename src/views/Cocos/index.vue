@@ -4,22 +4,34 @@
  *
  * @author yehaifeng
  */
-
-import Background from './Background';
-import Foreground from './Foreground';
+import ModeOne from './ModeOne';
+// import ModeTwo from './ModeTwo';
 
 export default {
-  name: 'Cocos',
+  name: 'ViewCocos',
 
   components: {
-    Background,
-    Foreground,
+    ...ModeOne,
+    // ...ModeTwo,
   },
 
   props: {
     asset: {
       type: Object,
       required: true,
+    },
+  },
+
+  computed: {
+    componentName() {
+      const list = ['One', 'Two', 'Three', 'Four'];
+
+      const postfix = list[this.asset.mode - 1];
+
+      return {
+        background: `BackgroundMode${postfix}`,
+        foreground: `ForegroundMode${postfix}`,
+      };
     },
   },
 };
@@ -31,13 +43,19 @@ export default {
     :background="asset.scene.background"
     class="view-cocos"
   >
-    <!-- eslint-disable-next-line -->
-    <Background slot="background" :src="asset.src" />
 
-    <Foreground
-      slot="foreground"
+    <Component
+      slot="background"
+      :is="componentName.background"
       :src="asset.src"
     />
+
+    <Component
+      slot="foreground"
+      :is="componentName.foreground"
+      :src="asset.src"
+    />
+
   </AppScene>
 </template>
 
