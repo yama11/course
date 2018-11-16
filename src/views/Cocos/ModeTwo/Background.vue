@@ -16,23 +16,19 @@ export default {
   },
 
   created() {
-    this.$ws.on(
-      'directorBroadcast',
-      this.receiveDirectorState,
-    );
+    this.$ws.on('directorControl', this.directorControlCallback);
   },
 
-  beforeDestroy() {
-    this.$ws.off(
-      'directorBroadcast',
-      this.receiveDirectorState,
-    );
+  destroyed() {
+    this.$ws.off('directorControl', this.directorControlCallback);
   },
 
   methods: {
-    receiveDirectorState() {
-      this.$refs.iframe.contentWindow
-        .postMessage({ type: 'play' }, '*');
+    directorControlCallback() {
+      if (this.$refs.iframe) {
+        this.$refs.iframe.contentWindow
+          .postMessage({ type: 'play' }, '*');
+      }
     },
   },
 

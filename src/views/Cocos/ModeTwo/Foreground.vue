@@ -21,22 +21,24 @@ export default {
     },
   }),
 
+  created() {
+    this.$ws.on('directorControl', this.directorControlCallback);
+  },
+
+  destroyed() {
+    this.$ws.off('directorControl', this.directorControlCallback);
+  },
+
   methods: {
-    directorBroadcast() {
+    directorControlCallback() {
       if (this.$refs.iframe) {
         this.$refs.iframe.contentWindow
           .postMessage({ type: 'play' }, '*');
       }
 
-      if (this.src.background) {
-        this.touchBack();
-      }
-    },
-
-    touchBack() {
-      const eventType = 'directorBroadcast';
-
-      this.$store.syncTeachGroupState({}, eventType);
+      setTimeout(() => {
+        window.focus();
+      }, 100);
     },
   },
 };
@@ -53,8 +55,7 @@ export default {
     />
 
     <AppDirector
-      :disabled="director.disabled"
-      @control="directorBroadcast"/>
+      :disabled="director.disabled"/>
   </div>
 </template>
 
