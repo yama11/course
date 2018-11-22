@@ -4,7 +4,7 @@
  *
  * @author suyanping
  */
-import { nativeMixSound } from '@/utils';
+import { nativeMixSound, AudioPlayer } from '@/utils';
 
 export default {
   name: 'AppAudio',
@@ -14,6 +14,12 @@ export default {
       type: String,
       default: '',
     },
+  },
+
+  data() {
+    return {
+      videoUrl: new AudioPlayer(this.src),
+    };
   },
 
   created() {
@@ -34,21 +40,20 @@ export default {
 
   methods: {
     receiveAudioState({ data: { isPlaying } }) {
-      const audio = this.$refs.audio;
-
       if (isPlaying) {
-        audio.play();
         nativeMixSound(1);
+
+        const callback = () => {
+          nativeMixSound(0);
+        };
+
+        this.videoUrl.echo({ callback });
 
         return;
       }
 
-      audio.pause();
+      this.videoUrl.pause();
 
-      nativeMixSound(0);
-    },
-
-    audioEnded() {
       nativeMixSound(0);
     },
   },
@@ -57,12 +62,7 @@ export default {
 </script>
 
 <template>
-  <div class="app-audio">
-    <audio
-      ref="audio"
-      :src="src"
-      @ended="audioEnded"/>
-  </div>
+  <div class="app-audio"/>
 </template>
 
 <style lang="postcss">
