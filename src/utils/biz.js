@@ -41,6 +41,12 @@ export class AudioPlayer {
     return this;
   }
 
+  echo({ src, callback } = {}) {
+    this.audio.onended = callback;
+
+    return this.play(src);
+  }
+
   pause() {
     this.audio.pause();
 
