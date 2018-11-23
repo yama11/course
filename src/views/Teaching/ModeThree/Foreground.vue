@@ -48,12 +48,13 @@ export default {
 </script>
 
 <template>
-  <div class="teaching-foreground global-scene">
+  <div class="teaching-three-foreground global-scene">
     <img
       v-if="src.card"
       :class="animations[0]"
       :src="src.card"
       alt="展示图片"
+      class="teaching-three-img"
     >
     <span
       v-for="(item,index) in texts"
@@ -68,12 +69,16 @@ export default {
 </template>
 
 <style lang="postcss" scoped>
-.teaching-foreground {
+.teaching-three-foreground {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding-right: 920px;
+}
+
+.teaching-three-img{
+  width: 400px;
 }
 
 .teaching-foreground__content {
