@@ -30,6 +30,8 @@ export default {
     assets: {},
 
     theme: null,
+
+    students: [],
   }),
 
   computed: {
