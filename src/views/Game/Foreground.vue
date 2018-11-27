@@ -22,6 +22,8 @@ export default {
 
   data: () => ({
     select: ['A', 'B', 'C', 'D'],
+
+    iframeTag: '',
   }),
 
   computed: {
@@ -39,6 +41,8 @@ export default {
     );
 
     window.addEventListener('message', ({ data }) => {
+      this.iframeTag = document.getElementById('iframe');
+
       const { type, playload } = data;
 
       if (type === 'guestAction') {
@@ -82,7 +86,7 @@ export default {
     },
 
     palyerList() {
-      this.$refs.iframe.contentWindow.postMessage({
+      this.iframeTag.contentWindow.postMessage({
         type: 'getPlayers',
         playload: {
           players: this.$store.students,
@@ -91,7 +95,7 @@ export default {
     },
 
     gameList() {
-      this.$refs.iframe.contentWindow.postMessage({
+      this.iframeTag.contentWindow.postMessage({
         type: 'getGame',
         playload: {
           game: {
@@ -139,7 +143,7 @@ export default {
     },
 
     sendPlayer(gameName, gameIndex, student) {
-      this.$refs.iframe.contentWindow.postMessage({
+      this.iframeTag.contentWindow.postMessage({
         type: 'playerAction',
         playload: {
           player: {
@@ -158,6 +162,7 @@ export default {
 <template>
   <div class="game-foreground">
     <iframe
+      id="iframe"
       ref="iframe"
       :src="src.gameUrl"
       frameborder="0"
