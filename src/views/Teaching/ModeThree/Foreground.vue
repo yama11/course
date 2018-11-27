@@ -41,9 +41,6 @@ export default {
     },
   },
 
-  created() {
-    this.$audio.play();
-  },
 };
 </script>
 

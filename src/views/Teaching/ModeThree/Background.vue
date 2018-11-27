@@ -11,6 +11,10 @@ export default {
   data: () => ({
 
   }),
+
+  created() {
+    this.$audio.play();
+  },
 };
 </script>
 

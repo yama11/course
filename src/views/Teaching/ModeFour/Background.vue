@@ -11,6 +11,10 @@ export default {
   props: {
 
   },
+
+  created() {
+    this.$audio.play();
+  },
 };
 </script>
 
