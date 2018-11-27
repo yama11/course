@@ -12,8 +12,10 @@ export default {
 
   }),
 
-  mounted() {
-    this.$audio.play();
+  created() {
+    setTimeout(() => {
+      this.$audio.play();
+    }, 200);
   },
 };
 </script>
