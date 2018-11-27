@@ -39,7 +39,7 @@ export default {
     },
   },
 
-  created() {
+  mounted() {
     this.$audio.play();
   },
 };
