@@ -136,7 +136,7 @@ export default {
       }, nameList[0]);
 
       if (gameName === this.moduleName) {
-        const gameIndex = nameList[3];
+        const gameIndex = Number(nameList[3]);
 
         this.sendPlayer(gameName, gameIndex, student);
       }
