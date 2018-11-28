@@ -147,7 +147,7 @@ export default {
         type: 'playerAction',
         playload: {
           player: {
-            id: student.id,
+            id: Number(student.id),
             answer: student.answer,
             gameName,
             gameIndex,
