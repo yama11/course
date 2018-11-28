@@ -48,11 +48,17 @@ export default {
       if (type === 'guestAction') {
         const { gameType: { tag } } = playload;
 
+        // eslint-disable-next-line
+        console.log('接收：game开始/结束-------- %o', data);
+
         this.sendStart(tag);
       }
 
       if (type === 'gameAction') {
         const { gameStep: { index, name, tag } } = playload;
+
+        // eslint-disable-next-line
+        console.log('接收：game小节开始/结束-------- %o', data);
 
         this.player(name, index, tag);
       }
