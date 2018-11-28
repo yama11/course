@@ -40,9 +40,7 @@ export default {
   },
 
   created() {
-    setTimeout(() => {
-      this.$audio.play();
-    }, 200);
+    this.$audio.play();
   },
 };
 </script>
