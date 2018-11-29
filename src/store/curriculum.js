@@ -58,8 +58,15 @@ export default {
     // 当前使用资源
     currentAsset() {
       const { step } = this.state;
+      const empty = {
+        type: 'empty',
+        scene: {
+          background: '',
+          foreground: '',
+        },
+      };
 
-      return this.steps[step] || {};
+      return this.steps[step] || empty;
     },
 
     backwardState() {
