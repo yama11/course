@@ -4,8 +4,8 @@ const audio = new AudioPlayer();
 
 const assetsList = [
   './audio/10085.mp3',
-  './audio/10534.mp3',
-  './audio/10553.mp3',
+  './audio/10086.mp3',
+  './audio/10087.mp3',
   './audio/10557.mp3',
 ];
 
