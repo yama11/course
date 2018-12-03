@@ -65,6 +65,8 @@ export default {
       },
 
       showResult: false,
+
+      showContent: false,
     };
   },
 
@@ -114,6 +116,10 @@ export default {
       this.showResult = true;
     },
 
+    changeContent() {
+      this.showContent = true;
+    },
+
     getStudentList(data) {
       this.amountList[data.answer].push(data);
     },
@@ -132,8 +138,10 @@ export default {
     class="practice-race"
     @eventEnd="eventDeal"
     @studentInfo="getStudentList"
+    @loadEnd="changeContent"
   >
     <RaceOption
+      v-if="showContent"
       :option-card="optionCard"
       :show-result="showResult"/>
 

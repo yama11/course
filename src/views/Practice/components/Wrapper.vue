@@ -152,8 +152,7 @@ export default {
         return;
       }
 
-      this.questioning = true;
-      this.$refs.raceTopic.playAudio();
+      this.loadingTerminate();
     },
 
     loadingTerminate() {
@@ -162,6 +161,8 @@ export default {
       this.questioning = true;
 
       this.$refs.raceTopic.playAudio();
+
+      this.$emit('loadEnd');
     },
 
     topicTerminate() {
@@ -235,6 +236,13 @@ export default {
       @timeEnd="timeTerminate"
     />
 
+    <PracticeLoading
+      v-show="loading"
+      :scene="loadingTheme.scene"
+      :bar="loadingTheme.bar"
+      @end="loadingTerminate"
+    />
+
     <PracticeTopic
       v-show="questioning"
       ref="raceTopic"
@@ -242,13 +250,6 @@ export default {
       :topics="src.topic"
       :counter="typeCounter"
       @topicEnd="topicTerminate"
-    />
-
-    <PracticeLoading
-      v-if="loading"
-      :scene="loadingTheme.scene"
-      :bar="loadingTheme.bar"
-      @end="loadingTerminate"
     />
   </div>
 </template>
