@@ -228,17 +228,15 @@ export default {
       :class="[animationsRandom[1], 'card-foreground-modefour__topic']"
     >
 
-    <div
-      v-if="isTopic">
-      <ForegroundCard
-        v-for="(item, index) in optionImg"
-        :key="item.url"
-        :active="checkCardActive(getLabel(index))"
-        :label="getLabel(index)"
-        :amount="amounts[getLabel(index)]"
-        :class="animations[index]"
-      />
-    </div>
+    <ForegroundCard
+      v-for="(item, index) in optionImg"
+      :key="item.url"
+      :active="checkCardActive(getLabel(index))"
+      :label="getLabel(index)"
+      :amount="amounts[getLabel(index)]"
+      :class="animations[index]"
+      :show-card="isTopic"
+    />
 
     <!-- <AppRank
       v-if="isShowRank"

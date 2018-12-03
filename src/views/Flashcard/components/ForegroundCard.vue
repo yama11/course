@@ -26,6 +26,12 @@ export default {
       type: Boolean,
       default: false,
     },
+
+    // 是否显示
+    showCard: {
+      type: Boolean,
+      default: true,
+    },
   },
 
   computed: {
@@ -37,7 +43,9 @@ export default {
 </script>
 
 <template>
-  <div class="foreground-card global-card-item">
+  <div
+    v-if="showCard"
+    class="foreground-card global-card-item">
     <div class="foreground-card__amount">
       <i>{{ label }}</i>
       <span
